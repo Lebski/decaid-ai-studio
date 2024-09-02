@@ -39,6 +39,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
           placeholder="Enter your email"
           value={email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          autocomplete='username'
           required
         />
         <InputField
@@ -47,6 +48,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
           placeholder="Enter your password"
           value={password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          autocomplete='current-password'
           required
         />
         <div className="flex mt-6 w-full">
