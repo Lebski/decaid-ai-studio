@@ -1,0 +1,64 @@
+import React, { useState } from 'react';
+import InputField from './InputField';
+import Button from './Button';
+
+import socialLoginIconGoogle from 'assets/images/social-login-icon-google.svg';
+
+const LoginForm: React.FC = () => {
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
+  };
+
+  return (
+    <div className="flex flex-col max-w-[360px] w-[360px]">
+      <div className="flex flex-col w-full">
+        <h1 className="text-3xl font-semibold leading-10 text-gray-900">Welcome back</h1>
+        <p className="mt-3 text-base leading-6 text-slate-600">Welcome back! Please enter your details.</p>
+      </div>
+      <form className="flex flex-col mt-8 w-full rounded-xl">
+        <InputField label="Email" type="email" placeholder="Enter your email" />
+        <InputField label="Password" type="password" placeholder="Enter your password" />
+        <div className="flex mt-6 w-full">
+          <div className="flex flex-1 shrink gap-2 items-start my-auto basis-0 min-w-[240px]">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={handleRememberMeChange}
+                className="sr-only peer"
+              />
+              <div className="flex justify-center items-center w-4 h-4 border border-gray-300 rounded peer-checked:bg-violet-700 peer-checked:border-violet-700 transition-colors duration-200 ease-in-out">
+                {rememberMe && (
+                  <svg className="w-3 h-3 text-white" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </div>
+              <span className="ml-2 text-sm font-medium leading-5 text-slate-700">Remember for 30 days</span>
+            </label>
+          </div>
+          <a href="#" className="overflow-hidden gap-1.5 self-stretch h-full text-sm font-semibold leading-5 text-violet-700">
+            Forgot password
+          </a>
+        </div>
+        <Button type="submit" variant="primary" className="mt-6">
+          Sign in
+        </Button>
+        <Button type="button" variant="secondary" className="mt-4">
+          <img src={socialLoginIconGoogle} alt="Google" className="w-6 h-6 mr-2" />
+          Sign in with Google
+        </Button>
+      </form>
+      <p className="flex gap-1 justify-center items-start mt-8 w-full text-sm leading-5">
+        <span className="text-slate-600">Don't have an account?</span>
+        <a href="#" className="overflow-hidden gap-1.5 self-stretch font-semibold text-violet-700">
+          Sign up
+        </a>
+      </p>
+    </div>
+  );
+};
+
+export default LoginForm;
