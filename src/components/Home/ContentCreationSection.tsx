@@ -1,4 +1,7 @@
 import React from 'react';
+import dotsIcon from 'assets/images/dots-vertical.svg';
+import editIcon from 'assets/images/edit-04.svg';
+import searchIcon from 'assets/images/search-refraction.svg';
 
 const ContentCreationSection: React.FC = () => {
   return (
@@ -8,7 +11,7 @@ const ContentCreationSection: React.FC = () => {
           Start creating content
         </h2>
         <div className="flex flex-col self-start w-5">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/27b851aea66c4d666f1ce529e99b2eefd71b87052354fd2ff0203d3f1f8b74ed?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1" alt="" className="object-contain w-5 aspect-square" />
+          <img src={dotsIcon} alt="" className="object-contain w-5 aspect-square" />
         </div>
       </div>
       <div className="flex mt-5 w-full bg-gray-200 min-h-[1px] max-md:max-w-full" />
@@ -16,12 +19,12 @@ const ContentCreationSection: React.FC = () => {
         <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-wrap gap-6 items-start w-full max-md:max-w-full">
             <ContentCreationCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/c5f6a8dcaaea91e0c465698bfc2fd7e25ee364e4e11981aaca16b7a65b86dc3b?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1"
+              icon={editIcon}
               title="Create a new post"
               description="Dive into the editor and start creating"
             />
             <ContentCreationCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/1136cf0427a7be39f9b8fec48122920c075fd2e06edf516027652afabaac08bd?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1"
+              icon={searchIcon}
               title="Find relevant Topics"
               description="Search the news to find topics to talk about"
             />
@@ -41,7 +44,9 @@ interface ContentCreationCardProps {
 const ContentCreationCard: React.FC<ContentCreationCardProps> = ({ icon, title, description }) => {
   return (
     <div className="flex flex-wrap flex-1 shrink gap-3 items-start p-5 bg-white rounded-xl border border-gray-200 border-solid shadow-sm basis-0 min-w-[320px] max-md:max-w-full">
-      <img loading="lazy" src={icon} alt="" className="object-contain shrink-0 w-12 shadow-sm aspect-square" />
+        <div className="flex w-12 h-12 p-3 justify-center items-center rounded-lg border border-[#E4E7EC] bg-white shadow-[0_0_0_1px_rgba(16,24,40,0.18)_inset,0_-2px_0_0_rgba(16,24,40,0.05)_inset,0_1px_2px_0_rgba(16,24,40,0.05)]">
+            <img loading="lazy" src={icon} alt="" className="object-contain shrink-0 w-6 h-6 shadow-sm aspect-square" />
+        </div>
       <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px] max-md:max-w-full">
         <div className="text-base font-semibold leading-6 text-slate-700 max-md:max-w-full">{title}</div>
         <div className="text-sm leading-5 text-ellipsis text-slate-600 max-md:max-w-full">{description}</div>
