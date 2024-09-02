@@ -4,6 +4,13 @@ import InspirationSection from 'components/Home/InspirationSection';
 import Layout from 'components/Layout/Layout';
 import React from 'react';
 
+import inspirationImage01 from 'assets/images/inspiration/01.png';
+import inspirationImage02 from 'assets/images/inspiration/02.png';
+import inspirationImage03 from 'assets/images/inspiration/03.png';
+import inspirationImage04 from 'assets/images/inspiration/04.png';
+import inspirationImage05 from 'assets/images/inspiration/05.png';
+import inspirationImage06 from 'assets/images/inspiration/06.png';
+
 const HomePage: React.FC = () => {
     const sidebarProps = {
         logo: 'https://cdn.builder.io/api/v1/image/assets/TEMP/963c23baa7ac0da5c1671f78779d34ba4c9c093a1877c01eb458b49ff5b9300f?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
@@ -22,37 +29,37 @@ const HomePage: React.FC = () => {
     };
     const inspirationCards: InspirationCardProps[] = [
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/42492cf06bf2644edc83108647fb0297f0abe10fbdd2ef73656238ac7cec229f?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage01,
             title: 'Create On-Brand Marketing Texts',
             description: 'Easily Create marketing texts that match your tone of voice and your companies style guides',
             tags: ['Marketing', 'Communication'],
         },
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/17e92e8df5969c6d573031be52b486929e7b2521e95964a901301616e6a58a16?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage02,
             title: 'Create a Meeting-Summary',
             description: 'Quickly generate comprehensive meeting summaries that capture key points and action items',
             tags: ['Management', 'Leadership'],
         },
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/6dabe04d717f205e6c0a6c3323e41e8b96f93efa7755184fc564d823e2898f2d?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage03,
             title: 'Create Social Media Posts from News',
             description: 'Effortlessly transform the latest news into engaging social media content tailored for your audience',
             tags: ['News', 'Management'],
         },
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/6e7e15aff87625c5da178b2092997d221dee4b7a20653157b06ae7834b6d2fdb?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage04,
             title: 'Generate a Project Briefing',
             description: 'Automatically create detailed project briefings to keep your team informed and aligned',
             tags: ['Management', 'Leadership'],
         },
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/c83e3462b174fa2a57fb0c2ebd31ab0752533f06b443612149a97001982f8742?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage05,
             title: 'Create a Podcast from News',
             description: 'Convert current news articles into ready-to-record podcast scripts for dynamic content creation',
             tags: ['News', 'Communication'],
         },
         {
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e0f25d7299e804db15d93c467b62c39c4d6d632b0d7703fefd0aa8d9f0e5620b?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            image: inspirationImage06,
             title: 'Create Notes from a Voice Mail',
             description: 'Accurately transcribe voicemail messages into organized notes for easy reference and follow-up',
             tags: ['Notes', 'Communication'],

@@ -10,7 +10,14 @@ interface InspirationCardProps {
 const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, description, tags }) => {
     return (
         <div className="flex flex-col flex-1 shrink basis-0 min-w-[320px]">
-            <img loading="lazy" src={image} alt={title} className="object-contain w-full rounded-2xl aspect-[1.43]" />
+            <div className="w-full rounded-2xl overflow-hidden aspect-[1.43]">
+                <img
+                    loading="lazy"
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                />
+            </div>
             <div className="flex flex-col mt-5 w-full">
                 <div className="flex flex-col w-full">
                     <div className="flex gap-4 items-start w-full">
