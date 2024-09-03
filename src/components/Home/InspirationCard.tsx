@@ -1,3 +1,4 @@
+import React from 'react';
 import arrowIcon from 'assets/images/arrow-up-right.svg';
 
 interface InspirationCardProps {
@@ -5,12 +6,16 @@ interface InspirationCardProps {
     title: string;
     description: string;
     tags: string[];
+    action?: () => void;
 }
 
-const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, description, tags }) => {
+const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, description, tags, action }) => {
     return (
         <div className="flex flex-col flex-1 shrink basis-0 min-w-[320px]">
-            <div className="w-full rounded-2xl overflow-hidden aspect-[1.43]">
+            <div 
+                className="w-full rounded-2xl overflow-hidden aspect-[1.43] cursor-pointer"
+                onClick={action}
+            >
                 <img
                     loading="lazy"
                     src={image}
@@ -20,7 +25,10 @@ const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, descrip
             </div>
             <div className="flex flex-col mt-5 w-full">
                 <div className="flex flex-col w-full">
-                    <div className="flex gap-4 items-start w-full">
+                    <div 
+                        className="flex gap-4 items-start w-full cursor-pointer"
+                        onClick={action}
+                    >
                         <h3 className="flex-1 shrink text-2xl font-semibold leading-8 text-gray-900 basis-0">{title}</h3>
                         <div className="flex flex-col pt-1 w-6">
                             <img src={arrowIcon} alt="" className="object-contain w-6 aspect-square" />
