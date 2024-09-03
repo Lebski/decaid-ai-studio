@@ -4,6 +4,8 @@ import NavItem from './NavItem';
 import NewFeaturesCard from './NewFeaturesCard';
 import UserProfile from './UserProfile';
 
+import newFeatureThumbnail from 'assets/images/new-feature-thumbnail.jpeg';
+
 interface SidebarProps {
   logo: string;
   brandName: string;
@@ -44,7 +46,15 @@ const Sidebar: React.FC<SidebarProps> = ({ logo, brandName, navItems, userProfil
             <NavItem icon="https://cdn.builder.io/api/v1/image/assets/TEMP/82165820428cc238990a78d869106d13a8b2750b688ae0e593d76049444ab1ea?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1" label="Support" />
             <NavItem icon="https://cdn.builder.io/api/v1/image/assets/TEMP/727e1cb83bb5bd47f11b21cfab976deb51bd3279e25e7aa10272dc03f18b5b58?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1" label="Settings" />
           </nav>
-          <NewFeaturesCard />
+          <NewFeaturesCard 
+            title="New feature" 
+            description="This is a new feature description" 
+            image={newFeatureThumbnail}
+            onClose={() => console.log('Close clicked')}
+            onDismiss={() => console.log('Dismiss clicked')}
+            onWhatsNew={() => console.log('What\'s new clicked')}
+            onPlay={() => console.log('Play clicked')}
+          />
           <UserProfile {...userProfile} />
         </div>
       </div>

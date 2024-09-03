@@ -1,27 +1,66 @@
 import React from 'react';
+import closeIcon from 'assets/images/x-close.svg';
+import PlayButton from './PlayButton';
 
-const NewFeaturesCard: React.FC = () => {
+interface NewFeaturesCardProps {
+  title: string;
+  description: string;
+  image: string;
+  onClose: () => void;
+  onDismiss: () => void;
+  onWhatsNew: () => void;
+  onPlay: () => void;
+}
+
+const NewFeaturesCard: React.FC<NewFeaturesCardProps> = ({
+  title,
+  description,
+  image,
+  onClose,
+  onDismiss,
+  onWhatsNew,
+  onPlay
+}) => {
   return (
     <div className="flex flex-col px-4 py-5 mt-6 w-full bg-gray-50 rounded-lg">
       <div className="flex flex-col w-full">
         <div className="flex relative gap-1 items-start pr-6 w-full max-md:pr-5">
           <div className="z-0 flex-1 shrink text-sm font-semibold leading-5 text-gray-900 basis-4">
-            New features available!
+            {title}
           </div>
-          <div className="flex overflow-hidden absolute -right-2 -top-3 z-0 justify-center items-center p-2 w-9 h-9 rounded-lg min-h-[36px]">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ccb57fb24d93af049edd86849d5170085e6d090faa8b41bfb6dea24b0b215363?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1" alt="" className="object-contain self-stretch my-auto w-5 aspect-square" />
-          </div>
+          <button 
+            onClick={onClose}
+            className="flex overflow-hidden absolute -right-2 -top-3 z-0 justify-center items-center p-2 w-9 h-9 rounded-lg min-h-[36px] hover:bg-gray-200 transition-colors duration-300"
+          >
+            <img src={closeIcon} alt="Close" className="object-contain self-stretch my-auto w-5 aspect-square" />
+          </button>
         </div>
         <div className="mt-1 text-sm leading-5 text-slate-600">
-          Check out the new dashboard view. Pages now load faster.
+          {description}
         </div>
       </div>
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d53629f105056fdf14de0b0eec86797578c52b100bd22c4eeab17217e3de2282?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1" alt="New dashboard preview" className="object-contain mt-4 rounded-md aspect-[1.59] w-[216px]" />
+      <div className="mt-4 w-full rounded-md overflow-hidden aspect-[1.59] relative">
+        <img
+          loading="lazy"
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute left-3 bottom-3">
+          <PlayButton onClick={onPlay} />
+        </div>
+      </div>
       <div className="flex gap-3 items-start self-start mt-4 text-sm font-semibold leading-5">
-        <button className="overflow-hidden gap-1.5 self-stretch whitespace-nowrap text-slate-600">
+        <button 
+          onClick={onDismiss}
+          className="overflow-hidden gap-1.5 self-stretch whitespace-nowrap text-slate-600 hover:text-slate-800 transition-colors duration-300"
+        >
           Dismiss
         </button>
-        <button className="overflow-hidden gap-1.5 self-stretch text-violet-700">
+        <button 
+          onClick={onWhatsNew}
+          className="overflow-hidden gap-1.5 self-stretch text-violet-700 hover:text-violet-900 transition-colors duration-300"
+        >
           What's new?
         </button>
       </div>
