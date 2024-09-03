@@ -16,10 +16,12 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({ title, children, onDots
             {title}
           </h2>
           <div 
-            className="flex flex-col self-start w-5 cursor-pointer"
+            className="flex flex-col self-start w-5 cursor-pointer group"
             onClick={onDotsClick}
           >
-            <img src={dotsIcon} alt="More options" className="object-contain w-5 aspect-square" />
+            <div className="p-1 rounded-full transition-colors duration-200 group-hover:bg-gray-100">
+              <img src={dotsIcon} alt="More options" className="object-contain w-5 aspect-square" />
+            </div>
           </div>
         </div>
         <div className="flex mt-5 w-full bg-gray-200 min-h-[1px] max-md:max-w-full" />
