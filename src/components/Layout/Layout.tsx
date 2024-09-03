@@ -1,23 +1,10 @@
 import React from 'react';
-import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar, { SidebarProps } from 'components/Sidebar/Sidebar';
 
 interface LayoutProps {
     title: string;
     children: React.ReactNode;
-    sidebarProps: {
-        logo: string;
-        brandName: string;
-        navItems: Array<{
-            icon: string;
-            label: string;
-            isActive?: boolean;
-        }>;
-        userProfile: {
-            avatar: string;
-            name: string;
-            email: string;
-        };
-    };
+    sidebarProps: SidebarProps;
 }
 
 const Layout: React.FC<LayoutProps> = ({ title, sidebarProps, children}) => {
