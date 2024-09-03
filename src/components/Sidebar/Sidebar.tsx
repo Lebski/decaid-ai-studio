@@ -29,8 +29,8 @@ const Sidebar: React.FC<SidebarProps> = ({ logo, brandName, navItems, userProfil
           <div className="flex flex-col pr-3.5 pl-6 w-full max-md:pl-5">
             <div className="flex items-start">
               <div className="flex gap-3 items-start min-w-[240px]">
-                <img loading="lazy" src={logo} alt="Company logo" className="object-contain shrink-0 w-12 shadow aspect-square" />
-                <img loading="lazy" src={brandName} alt="Brand name" className="object-contain shrink-0 aspect-[3.79] w-[182px]" />
+                <img src={logo} alt="Company logo" className="object-contain shrink-0 w-12 aspect-square" />
+                <img src={brandName} alt="Brand name" className="object-contain shrink-0 aspect-[3.79] w-[182px]" />
               </div>
             </div>
           </div>
