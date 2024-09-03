@@ -2,12 +2,11 @@ import React from 'react';
 import Sidebar, { SidebarProps } from 'components/Sidebar/Sidebar';
 
 interface LayoutProps {
-    title: string;
     children: React.ReactNode;
     sidebarProps: SidebarProps;
 }
 
-const Layout: React.FC<LayoutProps> = ({ title, sidebarProps, children}) => {
+const Layout: React.FC<LayoutProps> = ({ sidebarProps, children }) => {
     return (
         <div className="flex h-screen bg-white">
             <div className="fixed h-full">
@@ -16,12 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ title, sidebarProps, children}) => {
 
             <main className="flex-1 overflow-y-auto ml-[280px] pt-8 pb-12 bg-white">
                 <div className="px-8 max-md:px-5">
-                    <h1 className="text-3xl font-semibold leading-10 text-gray-900">
-                        {title}
-                    </h1>
-                    <div className="mt-8">
-                        {children}
-                    </div>
+                    {children}
                 </div>
             </main>
         </div>

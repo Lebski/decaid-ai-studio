@@ -1,16 +1,7 @@
+import React from 'react';
 import ContentCreationSection from 'components/Home/ContentCreationSection';
 import { InspirationCardProps } from 'components/Home/InspirationCard';
 import InspirationSection from 'components/Home/InspirationSection';
-import Layout from 'components/Layout/Layout';
-import React from 'react';
-
-import logo from 'assets/images/logo.svg';
-import userAvatar from 'assets/images/user-avatar.jpg';
-
-import homeIcon from 'assets/images/home-line.svg';
-import createIcon from 'assets/images/edit-04.svg';
-import researchIcon from 'assets/images/search-refraction.svg';
-import designIcon from 'assets/images/palette.svg';
 
 import inspirationImage01 from 'assets/images/inspiration/01.png';
 import inspirationImage02 from 'assets/images/inspiration/02.png';
@@ -18,31 +9,9 @@ import inspirationImage03 from 'assets/images/inspiration/03.png';
 import inspirationImage04 from 'assets/images/inspiration/04.png';
 import inspirationImage05 from 'assets/images/inspiration/05.png';
 import inspirationImage06 from 'assets/images/inspiration/06.png';
+import Header from 'components/Header';
 
 const HomePage: React.FC = () => {
-    const sidebarProps = {
-        logo: logo,
-        navItems: [
-            { icon: homeIcon, label: 'Home', isActive: true },
-            { icon: createIcon, label: 'Create' },
-            { icon: researchIcon, label: 'Research' },
-            { icon: designIcon, label: 'Design' },
-        ],
-        userProfile: {
-            avatar: userAvatar,
-            name: 'Olivia Rhye',
-            email: 'olivia@untitledui.com',
-            onLogout: () => {
-                console.log('Logout clicked');
-            }
-        },
-        onSearchInputChange: (value: string) => {
-            console.log('Search input changed:', value);
-        },
-        onSearchSubmit: (value: string) => {
-            console.log('Search submitted:', value);
-        }
-    };
     const inspirationCards: InspirationCardProps[] = [
         {
             image: inspirationImage01,
@@ -81,12 +50,14 @@ const HomePage: React.FC = () => {
             tags: ['Notes', 'Communication'],
         },
     ];
-    return <Layout title="Home" sidebarProps={sidebarProps}>
-        <ContentCreationSection />
-        <InspirationSection
-            cards={inspirationCards}
-        />
-    </Layout>;
+
+    return (
+        <>
+            <Header title="Home" />
+            <ContentCreationSection />
+            <InspirationSection cards={inspirationCards} />
+        </>
+    );
 };
 
 export default HomePage;

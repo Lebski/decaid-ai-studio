@@ -13,7 +13,7 @@ interface SidebarProps {
   navItems: Array<{
     icon: string;
     label: string;
-    isActive?: boolean;
+    path: string;
   }>;
   userProfile: UserProfileProps;
   onSearchInputChange?: (value: string) => void;
@@ -45,8 +45,16 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
       <div className="flex flex-col px-4 pb-8 mt-auto">
         <nav className="flex flex-col w-full text-base font-semibold leading-6 text-slate-700">
-          <NavItem icon={supportIcon} label="Support" />
-          <NavItem icon={settingsIcon} label="Settings" />
+          <NavItem 
+            icon={supportIcon} 
+            label="Support" 
+            path="/support"
+          />
+          <NavItem 
+            icon={settingsIcon} 
+            label="Settings" 
+            path="/settings"
+          />
         </nav>
         <NewFeaturesCard 
           title="New feature" 
