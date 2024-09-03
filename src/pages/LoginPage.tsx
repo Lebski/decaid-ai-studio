@@ -1,17 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from 'components/Logo';
 import LoginForm from 'components/LoginForm';
 import Testimonial from 'components/Testimonial';
 
 const LoginPage: React.FC = () => {
+    const navigate = useNavigate();
+
     const handleSubmit = (email: string, password: string, rememberMe: boolean) => {
         console.log('Login submitted', { email, password, rememberMe });
-        // Implement your login logic here
+        // Here you would typically validate the credentials
+        // For now, we'll just navigate to the home page
+        navigate('/home');
     };
 
     const handleGoogleSignIn = () => {
         console.log('Google Sign In clicked');
         // Implement Google Sign In logic here
+        // After successful sign-in, navigate to home
+        navigate('/home');
     };
 
     const handleForgotPassword = () => {

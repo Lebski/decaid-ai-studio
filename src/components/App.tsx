@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import Layout from 'components/Layout/Layout';
 import HomePage from 'pages/HomePage';
@@ -16,7 +16,9 @@ import designIcon from 'assets/images/palette.svg';
 import SettingsPage from 'pages/SettingsPage';
 import SupportPage from 'pages/SupportPage';
 
-function App() {
+function AppContent() {
+  const navigate = useNavigate();
+
   const sidebarProps = {
     logo: logo,
     navItems: [
@@ -31,7 +33,7 @@ function App() {
       email: 'olivia@untitledui.com',
       onLogout: () => {
         console.log('Logout clicked');
-        // Implement logout logic here
+        navigate('/login');
       }
     },
     onSearchInputChange: (value: string) => {
@@ -43,26 +45,32 @@ function App() {
   };
 
   return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route
+        path="/*"
+        element={
+          <Layout sidebarProps={sidebarProps}>
+            <Routes>
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/create" element={<CreatePage />} />
+              <Route path="/research" element={<ResearchPage />} />
+              <Route path="/design" element={<DesignPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/support" element={<SupportPage />} />
+            </Routes>
+          </Layout>
+        }
+      />
+    </Routes>
+  );
+}
+
+function App() {
+  return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
-        <Route
-          path="/*"
-          element={
-            <Layout sidebarProps={sidebarProps}>
-              <Routes>
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/create" element={<CreatePage />} />
-                <Route path="/research" element={<ResearchPage />} />
-                <Route path="/design" element={<DesignPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/support" element={<SupportPage />} />
-              </Routes>
-            </Layout>
-          }
-        />
-      </Routes>
+      <AppContent />
     </Router>
   );
 }
