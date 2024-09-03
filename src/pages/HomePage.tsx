@@ -5,6 +5,7 @@ import Layout from 'components/Layout/Layout';
 import React from 'react';
 
 import logo from 'assets/images/logo.svg';
+import userAvatar from 'assets/images/user-avatar.jpg';
 
 import homeIcon from 'assets/images/home-line.svg';
 import createIcon from 'assets/images/edit-04.svg';
@@ -28,9 +29,12 @@ const HomePage: React.FC = () => {
             { icon: designIcon, label: 'Design' },
         ],
         userProfile: {
-            avatar: 'https://cdn.builder.io/api/v1/image/assets/TEMP/0235daaa207d332f31c8feddbecbc46d279fdc9b156b85637667ce2d60dddeee?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1',
+            avatar: userAvatar,
             name: 'Olivia Rhye',
             email: 'olivia@untitledui.com',
+            onLogout: () => {
+                console.log('Logout clicked');
+            }
         },
         onSearchInputChange: (value: string) => {
             console.log('Search input changed:', value);

@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import NavItem from './NavItem';
 import NewFeaturesCard from './NewFeaturesCard';
-import UserProfile from './UserProfile';
+import UserProfile, { UserProfileProps } from './UserProfile';
 
 import newFeatureThumbnail from 'assets/images/new-feature-thumbnail.jpeg';
 import supportIcon from 'assets/images/life-buoy-01.svg';
@@ -15,11 +15,7 @@ interface SidebarProps {
     label: string;
     isActive?: boolean;
   }>;
-  userProfile: {
-    avatar: string;
-    name: string;
-    email: string;
-  };
+  userProfile: UserProfileProps;
   onSearchInputChange?: (value: string) => void;
   onSearchSubmit?: (value: string) => void;
 }
