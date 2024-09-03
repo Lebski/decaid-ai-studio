@@ -7,8 +7,13 @@ interface InspirationSectionProps {
 }
 
 const InspirationSection: React.FC<InspirationSectionProps> = ({ cards }) => {
+  const handleDotsClick = () => {
+    console.log('Dots clicked in Inspiration section');
+    // Add your logic here
+  };
+
   return (
-    <SectionWrapper title="Inspiration">
+    <SectionWrapper title="Inspiration" onDotsClick={handleDotsClick}>
       {cards.map((card, index) => (
         <InspirationCard key={index} {...card} />
       ))}
