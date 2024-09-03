@@ -22,15 +22,17 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ title, sidebarProps, children}) => {
     return (
-        <div className="flex flex-wrap bg-white">
-            <Sidebar {...sidebarProps} />
+        <div className="flex h-screen bg-white">
+            <div className="fixed h-full">
+                <Sidebar {...sidebarProps} />
+            </div>
 
-            <main className="flex overflow-hidden flex-col flex-1 shrink self-start pt-8 pb-12 bg-white basis-0 min-w-[240px] max-md:max-w-full">
-                <h1 className="text-3xl font-semibold leading-10 text-gray-900 px-8 max-md:px-5">
-                    {title}
-                </h1>
-                <div className="flex flex-col mt-8 w-full max-md:max-w-full">
-                    <div className="flex flex-col px-8 w-full max-md:px-5 max-md:max-w-full">
+            <main className="flex-1 overflow-y-auto ml-[280px] pt-8 pb-12 bg-white">
+                <div className="px-8 max-md:px-5">
+                    <h1 className="text-3xl font-semibold leading-10 text-gray-900">
+                        {title}
+                    </h1>
+                    <div className="mt-8">
                         {children}
                     </div>
                 </div>
