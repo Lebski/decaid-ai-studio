@@ -4,6 +4,7 @@ import TabNavigation, { Tab } from "components/Common/TabNavigation";
 import Button from "components/Forms/Button";
 
 import plusIcon from "assets/images/plus.svg";
+import IntegrationList from "./IntegrationList";
 
 const tabs: Tab[] = [
     { label: 'View all', id: 'all' },
@@ -47,6 +48,7 @@ const SourcesSection: React.FC = () => {
                     onTabChange={handleTabChange}
                 />
             </div>
+            <IntegrationList />
         </SectionWrapper>
     );
 }
