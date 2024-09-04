@@ -23,9 +23,13 @@ const UploadedFile: React.FC<UploadedFileProps> = ({
 }) => {
     const isValidFileType = validFileTypes.includes(fileType.toLowerCase());
 
+    const defaultBorder = 'border border-gray-200 border-solid';
+    const errorBorder = 'border border-2 border-red-500 border-solid';
+    const borderClasses = error ? errorBorder : defaultBorder
+
     return (
         <div className="w-full">
-            <div className="flex items-center p-4 w-full bg-gray-50 rounded-xl border border-gray-200 border-solid">
+            <div className={`flex items-center p-4 w-full bg-gray-50 rounded-xl ${borderClasses}`}>
                 <div className="flex items-center flex-grow min-w-0">
                     {isValidFileType && (
                         <div className="flex-shrink-0 mr-3">
