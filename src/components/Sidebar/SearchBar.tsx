@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onInputChange, onSubmit }) => {
   };
 
   return (
-    <div className="px-6 mt-6 max-w-full w-[279px] max-md:px-5">
+    <div className="mt-6 max-w-full">
       <div className="flex items-center px-3.5 py-2.5 bg-white rounded-lg border border-gray-300 shadow-sm">
         <img 
           src={searchIcon} 

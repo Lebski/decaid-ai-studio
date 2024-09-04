@@ -33,10 +33,12 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="pt-8 pr-3.5 pl-6 max-md:pl-5">
           <img src={logo} alt="Company logo" className="object-contain shrink-0" />
         </div>
-        <SearchBar 
-          onInputChange={onSearchInputChange}
-          onSubmit={onSearchSubmit}
-        />
+        <div className='px-6 max-md:px-5'>
+          <SearchBar 
+            onInputChange={onSearchInputChange}
+            onSubmit={onSearchSubmit}
+          />
+        </div>
         <nav className="flex flex-col px-4 mt-6 text-base font-semibold leading-6 text-slate-700">
           {navItems.map((item, index) => (
             <NavItem key={index} {...item} />

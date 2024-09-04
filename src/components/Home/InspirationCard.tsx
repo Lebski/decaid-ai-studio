@@ -1,5 +1,6 @@
 import React from 'react';
 import arrowIcon from 'assets/images/arrow-up-right.svg';
+import Tag from 'components/Common/Tag';
 
 interface InspirationCardProps {
     image: string;
@@ -38,9 +39,10 @@ const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, descrip
                 </div>
                 <div className="flex flex-wrap gap-2 items-start mt-6 w-full text-sm font-medium leading-5 text-center whitespace-nowrap">
                     {tags.map((tag, index) => (
-                        <span key={index} className={`self-stretch px-2.5 py-0.5 rounded-full border border-solid ${getTagStyle(tag)}`}>
-                            {tag}
-                        </span>
+                        <Tag 
+                            key={index}
+                            {...getTagStyle(tag)}
+                        />
                     ))}
                 </div>
             </div>
@@ -48,16 +50,23 @@ const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, descrip
     );
 };
 
-const getTagStyle = (tag: string) => {
-    const styles: { [key: string]: string } = {
-        Marketing: 'text-sky-700 bg-sky-50 border-sky-200',
-        Communication: 'text-indigo-700 bg-indigo-50 border-indigo-200',
-        Management: 'text-emerald-700 bg-emerald-50 border-emerald-200',
-        Leadership: 'text-pink-700 bg-pink-50 border-pink-200',
-        News: 'text-violet-700 bg-purple-50 border-purple-200',
-        Notes: 'text-orange-700 bg-orange-50 border-orange-200',
+interface TagData {
+    text: string;
+    bgColor: string;
+    textColor: string;
+    borderColor: string;
+  }
+
+const getTagStyle = (tag: string): TagData => {
+    const styles: { [key: string]: TagData } = {
+        Marketing: { text: 'Marketing', bgColor: 'bg-sky-50', textColor: 'text-sky-700', borderColor: 'border-sky-200' },
+        Communication: { text: 'Communication', bgColor: 'bg-indigo-50', textColor: 'text-indigo-700', borderColor: 'border-indigo-200' },
+        Management: { text: 'Management', bgColor: 'bg-emerald-50', textColor: 'text-emerald-700', borderColor: 'border-emerald-200' },
+        Leadership: { text: 'Leadership', bgColor: 'bg-pink-50', textColor: 'text-pink-700', borderColor: 'border-pink-200' },
+        News: { text: 'News', bgColor: 'bg-purple-50', textColor: 'text-violet-700', borderColor: 'border-violet-200' },
+        Notes: { text: 'Notes', bgColor: 'bg-orange-50', textColor: 'text-orange-700', borderColor: 'border-orange-200' },
     };
-    return styles[tag] || 'text-indigo-900 bg-slate-50 border-slate-300';
+    return styles[tag] || { text: tag, bgColor: 'bg-indigo-50', textColor: 'text-indigo-700', borderColor: 'border-indigo-200' };
 };
 
 export default InspirationCard;
