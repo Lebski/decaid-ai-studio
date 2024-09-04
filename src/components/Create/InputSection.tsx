@@ -7,13 +7,18 @@ interface InputSectionProps {
     // Add any props if needed
 }
 
+const handleDotsClick = () => {
+    console.log('Dots clicked in Content Creation Prompt section');
+    // Add your logic here
+};
+
 const InputSection: React.FC<InputSectionProps> = () => {
-    const handleDotsClick = () => {
-        console.log('Dots clicked in Content Creation section');
-        // Add your logic here
-    };
     return (
-        <SectionWrapper title="Start creating content" onDotsClick={handleDotsClick}>
+        <SectionWrapper 
+            title="Input"
+            description="Create new content from existing files or texts." 
+            onDotsClick={handleDotsClick}
+        >
             <PromptInput />
             <AdditionalFiles />
         </SectionWrapper>
