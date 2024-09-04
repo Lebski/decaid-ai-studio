@@ -1,0 +1,12 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tinder">
+<path id="Path" d="M14 0C6.27812 0 0 6.27812 0 14C0 21.7219 6.27812 28 14 28C21.7219 28 28 21.7219 28 14C28 6.27812 21.7219 0 14 0Z" fill="url(#paint0_radial_1334_675)"/>
+<path id="vector" fill-rule="evenodd" clip-rule="evenodd" d="M11.195 12.46C11.1778 12.4661 11.1573 12.4605 11.1458 12.4464C10.6016 11.7301 10.4649 10.4987 10.4316 10.0257C10.4248 9.93464 10.3218 9.88344 10.2393 9.9292C8.55905 10.8675 7 13.087 7 15.23C7 18.9115 9.57214 22 14 22C18.1485 22 21 18.8168 21 15.2304C21 10.5377 17.6267 7.41971 14.6221 6.01025C14.5518 5.97728 14.4586 6.04515 14.4689 6.12171C14.8559 8.65068 14.3213 11.4012 11.195 12.46Z" fill="white"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_1334_675" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14 28) scale(29.9132)">
+<stop stop-color="#FF7854"/>
+<stop offset="1" stop-color="#FD267D"/>
+</radialGradient>
+</defs>
+</svg>
