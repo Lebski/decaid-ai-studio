@@ -2,7 +2,7 @@ import React from 'react';
 
 interface FormLabelProps {
   label: string;
-  description: string;
+  description?: string;
   required?: boolean;
 }
 
@@ -14,7 +14,7 @@ const FormLabel: React.FC<FormLabelProps> = ({ label, description, required }) =
         <span className="self-stretch my-auto text-slate-700">{label}</span>
         {required && <span className="self-stretch my-auto text-violet-500">*</span>}
       </label>
-      <p className="text-slate-600">{description}</p>
+      {description && <p className="text-slate-600">{description}</p>}
     </div>
   );
 }

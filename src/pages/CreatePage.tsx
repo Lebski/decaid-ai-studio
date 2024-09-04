@@ -5,6 +5,7 @@ import SettingsSection from 'components/Create/SettingsSection';
 import Button from 'components/Forms/Button';
 import generateIcon from 'assets/images/star-06-white.svg';
 import FormContainer from 'components/Forms/FormContainer';
+import OutputSection from 'components/Create/OutputSection';
 
 const CreatePage: React.FC = () => {
     return (
@@ -22,6 +23,7 @@ const CreatePage: React.FC = () => {
                     Create
                 </Button>
             </FormContainer>
+            <OutputSection />
         </>
     );
 };
