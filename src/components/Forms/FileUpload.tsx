@@ -22,14 +22,14 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage, 
 
     const isFileFormatValid = useCallback((file: File) => {
         const fileExtension = file.name.split('.').pop()?.toLowerCase();
-        return fileExtension && allowedFormats.includes(fileExtension);
+        return (fileExtension && allowedFormats.includes(fileExtension)) || false;
     }, [allowedFormats]);
 
     const handleFileSelection = useCallback((files: FileList) => {
         const newFiles = Array.from(files).map(file => ({
             file,
             progress: 0,
-            uploading: true,
+            uploading: isFileFormatValid(file),
             error: isFileFormatValid(file) ? undefined : 'Unsupported file format'
         }));
 
@@ -129,6 +129,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage, 
                     uploadProgress={file.progress}
                     uploadInProgress={file.uploading}
                     error={file.error}
+                    onDelete={() => setUploadingFiles(prev => prev.filter(f => f !== file))}
                 />
             ))}
         </div>
