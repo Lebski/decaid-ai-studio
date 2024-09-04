@@ -47,6 +47,7 @@ const InputSection: React.FC = () => {
                         placeholder="I'm a Product Designer based in Melbourne, Australia. I specialise in UX/UI design, brand strategy, and Webflow development."
                         maxChars={275}
                         onChange={handlePromptInputChange}
+                        fixedHeight={true}
                     />
                 </FormContent>
             </FormContainer>

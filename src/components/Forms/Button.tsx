@@ -3,7 +3,7 @@ import React from 'react';
 interface ButtonProps {
   type: 'button' | 'submit' | 'reset';
   variant: 'primary' | 'secondary';
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'square';
   className?: string;
   onClick?: () => void;
   children: React.ReactNode;
@@ -15,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({ type, variant, size, className, onClick
     sm: "text-sm px-3 py-2",
     md: "text-sm px-3.5 py-2.5",
     lg: "text-md px-4 py-2.5",
+    square: "text-sm px-3 aspect-square",
   };
   const variantClasses = {
     primary: "text-white bg-violet-500 border-white border-opacity-10 hover:bg-violet-700",
