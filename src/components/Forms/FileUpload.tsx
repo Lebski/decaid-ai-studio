@@ -4,31 +4,52 @@ import uploadIcon from "assets/images/upload-cloud-02-gray.svg";
 import IconBox from "components/Common/IconBox";
 
 interface FileUploadProps {
-    // Add any additional props here if needed
+    allowedFormats: string[];
+    formatMessage?: string;
 }
 
 interface UploadingFile {
     file: File;
     progress: number;
     uploading: boolean;
+    error?: string;
 }
 
-const FileUpload: React.FC<FileUploadProps> = () => {
+const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage }) => {
     const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
+    const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const isFileFormatValid = useCallback((file: File) => {
+        const fileExtension = file.name.split('.').pop()?.toLowerCase();
+        return fileExtension && allowedFormats.includes(fileExtension);
+    }, [allowedFormats]);
 
     const handleFileSelection = useCallback((files: FileList) => {
         const newFiles = Array.from(files).map(file => ({
             file,
             progress: 0,
-            uploading: true
+            uploading: true,
+            error: isFileFormatValid(file) ? undefined : 'Unsupported file format'
         }));
 
         setUploadingFiles(prev => [...prev, ...newFiles]);
 
-        // Simulate upload for each file
-        newFiles.forEach(simulateUpload);
-    }, []);
+        // Simulate upload for each valid file
+        newFiles.forEach(file => {
+            if (!file.error) {
+                simulateUpload(file);
+            }
+        });
+
+        // Show error if any invalid files were selected
+        const invalidFiles = newFiles.filter(file => file.error);
+        if (invalidFiles.length > 0) {
+            setError(`${invalidFiles.length} file(s) have unsupported format. Please upload only ${allowedFormats.join(', ')} files.`);
+        } else {
+            setError(null);
+        }
+    }, [isFileFormatValid, allowedFormats]);
 
     const simulateUpload = useCallback((uploadingFile: UploadingFile) => {
         let progress = 0;
@@ -91,7 +112,7 @@ const FileUpload: React.FC<FileUploadProps> = () => {
                             <span className="text-slate-600">or drag and drop</span>
                         </p>
                         <p className="mt-1 text-xs leading-5 text-center text-slate-600 max-md:max-w-full">
-                            SVG, PNG, JPG or GIF (max. 800x400px)
+                            {formatMessage || `Allowed formats: ${allowedFormats.join(', ')}`}
                         </p>
                     </div>
                 </div>
@@ -102,6 +123,7 @@ const FileUpload: React.FC<FileUploadProps> = () => {
                 className="hidden" 
                 onChange={onFileInputChange}
                 multiple
+                accept={allowedFormats.map(format => `.${format}`).join(',')}
             />
             {uploadingFiles.map((file, index) => (
                 <UploadedFile 
@@ -111,6 +133,7 @@ const FileUpload: React.FC<FileUploadProps> = () => {
                     fileType={file.file.name.split('.').pop() as any}
                     uploadProgress={file.progress}
                     uploadInProgress={file.uploading}
+                    error={file.error}
                 />
             ))}
         </div>

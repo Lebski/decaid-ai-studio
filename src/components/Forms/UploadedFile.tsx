@@ -8,9 +8,10 @@ interface UploadedFileProps {
     fileType: 'aep' | 'ai' | 'csv' | 'doc' | 'docx' | 'eps' | 'fig' | 'gif' | 'img' | 'indd' | 'jpg' | 'pdf' | 'png' | 'ppt' | 'pptx' | 'psd' | 'svg' | 'tiff' | 'txt' | 'webp' | 'xls' | 'xlsx';
     uploadProgress: number;
     uploadInProgress: boolean;
+    error?: string;
 }
 
-const UploadedFile: React.FC<UploadedFileProps> = ({ fileName, fileSize, fileType, uploadProgress, uploadInProgress }) => {
+const UploadedFile: React.FC<UploadedFileProps> = ({ fileName, fileSize, fileType, uploadProgress, uploadInProgress, error }) => {
     return (
         <div className="w-full">
             <div className="flex items-center p-4 w-full bg-gray-50 rounded-xl border border-gray-200 border-solid">
@@ -20,11 +21,12 @@ const UploadedFile: React.FC<UploadedFileProps> = ({ fileName, fileSize, fileTyp
                         <p className="font-medium text-sm leading-5 text-ellipsis overflow-hidden whitespace-nowrap text-slate-700">{fileName}</p>
                         <p className="text-sm leading-5 text-ellipsis overflow-hidden whitespace-nowrap text-slate-600">
                             {fileSize}
-                            {uploadInProgress && ` - ${uploadProgress}% uploaded`}
+                            {uploadInProgress && !error && ` - ${uploadProgress}% uploaded`}
+                            {error && <span className="text-red-500"> - {error}</span>}
                         </p>
                     </div>
                 </div>
-                {uploadInProgress && (
+                {uploadInProgress && !error && (
                     <div className="flex-shrink-0 ml-12">
                         <Spinner className="w-8 h-8"/>
                     </div>
