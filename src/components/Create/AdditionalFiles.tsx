@@ -2,11 +2,14 @@ import React from 'react';
 import InputLabel from 'components/Forms/InputLabel';
 import FileUpload from 'components/Forms/FileUpload';
 
+const handleFileUploaded = (file: File) => {
+    console.log(`File uploaded: ${file.name}`);
+    // Perform any additional actions with the uploaded file
+};
 
 interface AdditionalFilesProps {
     // Add any props if needed
 }
-
 
 const AdditionalFiles: React.FC<AdditionalFilesProps> = () => {
     return (
@@ -18,6 +21,7 @@ const AdditionalFiles: React.FC<AdditionalFilesProps> = () => {
             <FileUpload 
                 allowedFormats={['svg', 'png', 'jpeg', 'jpg', 'gif']}
                 formatMessage="SVG, PNG, JPG or GIF (max. 800x400px)"
+                onFileUploaded={handleFileUploaded}
             />
         </div>
     );

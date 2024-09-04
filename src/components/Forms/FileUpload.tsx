@@ -6,6 +6,7 @@ import IconBox from "components/Common/IconBox";
 interface FileUploadProps {
     allowedFormats: string[];
     formatMessage?: string;
+    onFileUploaded?: (file: File) => void;
 }
 
 interface UploadingFile {
@@ -15,9 +16,8 @@ interface UploadingFile {
     error?: string;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage }) => {
+const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage, onFileUploaded }) => {
     const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
-    const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const isFileFormatValid = useCallback((file: File) => {
@@ -41,14 +41,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage }
                 simulateUpload(file);
             }
         });
-
-        // Show error if any invalid files were selected
-        const invalidFiles = newFiles.filter(file => file.error);
-        if (invalidFiles.length > 0) {
-            setError(`${invalidFiles.length} file(s) have unsupported format. Please upload only ${allowedFormats.join(', ')} files.`);
-        } else {
-            setError(null);
-        }
     }, [isFileFormatValid, allowedFormats]);
 
     const simulateUpload = useCallback((uploadingFile: UploadingFile) => {
@@ -63,6 +55,9 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage }
                         f.file === uploadingFile.file ? { ...f, progress: 100, uploading: false } : f
                     )
                 );
+                if (onFileUploaded) {
+                    onFileUploaded(uploadingFile.file);
+                }
             } else {
                 setUploadingFiles(prev => 
                     prev.map(f => 
@@ -71,7 +66,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage }
                 );
             }
         }, 500);
-    }, []);
+    }, [onFileUploaded]);
 
     const onDragOver = useCallback((event: React.DragEvent) => {
         event.preventDefault();
