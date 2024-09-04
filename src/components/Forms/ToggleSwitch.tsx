@@ -21,7 +21,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ label, id, onToggle, initia
       <input
         type="checkbox"
         id={id}
-        className="sr-only"
+        className="absolute w-0 h-0 opacity-0"
         checked={isChecked}
         onChange={handleToggle}
       />
