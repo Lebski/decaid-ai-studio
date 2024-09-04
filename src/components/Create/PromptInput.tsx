@@ -11,6 +11,10 @@ const handlePromptInputTypeSelect = (value: string) => {
     console.log("Selected value:", value);
 };
 
+const handlePromptInputChange = (value: string) => {
+    console.log("Prompt input changed:", value);
+}
+
 const InputField: React.FC<InputFieldProps> = () => {
     return (
         <div className="flex flex-wrap gap-4 items-start w-full max-md:max-w-full">
@@ -32,6 +36,8 @@ const InputField: React.FC<InputFieldProps> = () => {
                         name='prompt'
                         ariaLabel='Prompt'
                         placeholder="I'm a Product Designer based in Melbourne, Australia. I specialise in UX/UI design, brand strategy, and Webflow development."
+                        maxChars={275}
+                        onChange={handlePromptInputChange}
                     />
                 </div>
             </div>
