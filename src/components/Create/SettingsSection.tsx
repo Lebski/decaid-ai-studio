@@ -7,6 +7,7 @@ import DropDown, { DropdownItem } from "components/Forms/DropDown";
 import linkedinIcon from "assets/images/linkedin-icon.svg";
 import instagramIcon from "assets/images/instagram-icon.svg";
 import tinderIcon from "assets/images/tinder-icon.svg";
+import ToggleSwitch from "components/Forms/ToggleSwitch";
 
 
 interface SettingsSectionProps {
@@ -20,6 +21,10 @@ const handleTaskTypeSelect = (value: string) => {
 const handlePlatformSelect = (item: DropdownItem) => {
     console.log('Selected platform type:', item.value);
 };
+
+const handleEnhancedSearchToggle = (value: boolean) => {
+    console.log('Enhanced search:', value);
+}
 
 
 const SettingsSection: React.FC<SettingsSectionProps> = () => {
@@ -82,7 +87,7 @@ const SettingsSection: React.FC<SettingsSectionProps> = () => {
                 />
                 <div className="flex flex-col flex-1 shrink max-w-lg basis-0 min-w-[320px] max-md:max-w-full">
                     <div className="flex flex-col w-full max-md:max-w-full">
-                        Stuff
+                        <ToggleSwitch label="Enhanced search" id="enhancedSearch" onToggle={handleEnhancedSearchToggle} />
                     </div>
                 </div>
             </div>
