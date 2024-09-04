@@ -51,7 +51,7 @@ const AINewsSearch: React.FC = () => {
                         Start your search here
                     </h1>
                 </div>
-                <div className="flex flex-col px-6 w-full max-w-[720px]">
+                <div className="flex flex-col px-6 w-full max-w-[720px] gap-3">
                     <SearchBar
                         onInputChange={handleSearchValueChange}
                         onSubmit={handleSearchBarSubmit}

@@ -1,6 +1,6 @@
 import React from 'react';
 import arrowIcon from 'assets/images/arrow-up-right.svg';
-import Tag from 'components/Common/Tag';
+import TagList from 'components/Common/TagList';
 
 interface InspirationCardProps {
     image: string;
@@ -11,6 +11,11 @@ interface InspirationCardProps {
 }
 
 const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, description, tags, action }) => {
+    const tagData = tags.map((tag, index) => ({
+        id: index.toString(),
+        ...getTagStyle(tag)
+    }));
+
     return (
         <div className="flex flex-col flex-1 shrink basis-0 min-w-[320px]">
             <div 
@@ -37,13 +42,8 @@ const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, descrip
                     </div>
                     <p className="mt-2 text-base leading-6 text-ellipsis text-slate-600">{description}</p>
                 </div>
-                <div className="flex flex-wrap gap-2 items-start mt-6 w-full text-sm font-medium leading-5 text-center whitespace-nowrap">
-                    {tags.map((tag, index) => (
-                        <Tag 
-                            key={index}
-                            {...getTagStyle(tag)}
-                        />
-                    ))}
+                <div className="mt-6">
+                    <TagList initialTags={tagData} />
                 </div>
             </div>
         </div>
@@ -51,14 +51,15 @@ const InspirationCard: React.FC<InspirationCardProps> = ({ image, title, descrip
 };
 
 interface TagData {
+    id: string;
     text: string;
     bgColor: string;
     textColor: string;
     borderColor: string;
-  }
+}
 
-const getTagStyle = (tag: string): TagData => {
-    const styles: { [key: string]: TagData } = {
+const getTagStyle = (tag: string): Omit<TagData, 'id'> => {
+    const styles: { [key: string]: Omit<TagData, 'id'> } = {
         Marketing: { text: 'Marketing', bgColor: 'bg-sky-50', textColor: 'text-sky-700', borderColor: 'border-sky-200' },
         Communication: { text: 'Communication', bgColor: 'bg-indigo-50', textColor: 'text-indigo-700', borderColor: 'border-indigo-200' },
         Management: { text: 'Management', bgColor: 'bg-emerald-50', textColor: 'text-emerald-700', borderColor: 'border-emerald-200' },

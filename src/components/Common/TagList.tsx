@@ -12,17 +12,19 @@ interface TagData {
 
 interface TagListProps {
   initialTags: TagData[];
-  onTagRemove: (removedTag: TagData) => void;
+  onTagRemove?: (removedTag: TagData) => void;
 }
 
 const TagList: React.FC<TagListProps> = ({ initialTags, onTagRemove }) => {
+  const isRemovable = !!onTagRemove;
+
   return (
-    <div className="flex flex-wrap gap-2 items-start mt-3 w-full max-md:max-w-full">
+    <div className="flex flex-wrap gap-2 items-start w-full">
       {initialTags.map((tag) => (
         <Tag 
           key={tag.id}
-          isRemovable={true}
-          onRemove={() => onTagRemove(tag)}
+          isRemovable={isRemovable}
+          onRemove={isRemovable ? () => onTagRemove(tag) : undefined}
           {...tag} 
         />
       ))}
