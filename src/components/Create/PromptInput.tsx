@@ -7,6 +7,10 @@ interface InputFieldProps {
     // Add any props if needed
 }
 
+const handlePromptInputTypeSelect = (value: string) => {
+    console.log("Selected value:", value);
+};
+
 const InputField: React.FC<InputFieldProps> = () => {
     return (
         <div className="flex flex-wrap gap-4 items-start w-full max-md:max-w-full">
@@ -17,7 +21,13 @@ const InputField: React.FC<InputFieldProps> = () => {
             />
             <div className="flex flex-col flex-1 shrink max-w-lg basis-0 min-w-[320px] max-md:max-w-full">
                 <div className="flex flex-col w-full max-md:max-w-full">
-                    <Toggle />
+                    <Toggle
+                        options={[
+                            { caption: "Text", value: "text" },
+                            { caption: "Voice", value: "voice" },
+                        ]}
+                        onSelect={handlePromptInputTypeSelect}
+                    />
                     <TextField
                         name='prompt'
                         ariaLabel='Prompt'
