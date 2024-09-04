@@ -4,10 +4,16 @@ import dotsIcon from 'assets/images/dots-vertical.svg';
 interface SectionHeaderProps {
     title: string;
     description?: string;
+    hasHairline?: boolean;
     onDotsClick?: () => void;
 }
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description, onDotsClick }) => {
+const SectionHeader: React.FC<SectionHeaderProps> = ({ 
+    title, 
+    description,
+    hasHairline = true, 
+    onDotsClick 
+}) => {
     return (
         <div className="flex flex-col w-full min-w-[240px] max-md:max-w-full">
             <div className="flex flex-wrap gap-4">
@@ -33,7 +39,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description, onDot
                     </div>
                 )}
             </div>
-            <div className="flex mt-5 bg-gray-200 min-h-[1px]" />
+            {hasHairline && <div className="flex mt-5 bg-gray-200 min-h-[1px]" />}
         </div>
     );
 };
