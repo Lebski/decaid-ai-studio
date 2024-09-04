@@ -16,7 +16,7 @@ const AdditionalFiles: React.FC<AdditionalFilesProps> = () => {
                 description='Upload additional knowledge'
             />
             <FileUpload 
-                allowedFormats={['svg', 'png', 'jpeg', 'gif']}
+                allowedFormats={['svg', 'png', 'jpeg', 'jpg', 'gif']}
                 formatMessage="SVG, PNG, JPG or GIF (max. 800x400px)"
             />
         </div>
