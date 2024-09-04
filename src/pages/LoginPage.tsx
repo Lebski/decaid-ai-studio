@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from 'components/Logo';
-import LoginForm from 'components/LoginForm';
-import Testimonial from 'components/Testimonial';
+import Logo from 'components/Common/Logo';
+import LoginForm from 'components/Login/LoginForm';
+import Testimonial from 'components/Login/Testimonial';
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();

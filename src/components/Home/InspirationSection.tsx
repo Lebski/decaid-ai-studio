@@ -1,6 +1,6 @@
 import React from 'react';
 import InspirationCard, { InspirationCardProps } from './InspirationCard';
-import SectionWrapper from 'components/SectionWrapper';
+import SectionWrapper from 'components/Common/SectionWrapper';
 
 interface InspirationSectionProps {
     cards: InspirationCardProps[]

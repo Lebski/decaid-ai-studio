@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import InputField from './InputField';
-import Button from './Button';
 
 import socialLoginIconGoogle from 'assets/images/social-login-icon-google.svg';
+import InputField from 'components/Forms/InputField';
+import Button from 'components/Forms/Button';
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string, rememberMe: boolean) => void;

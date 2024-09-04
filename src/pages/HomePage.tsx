@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from 'components/Common/Header';
 import ContentCreationSection from 'components/Home/ContentCreationSection';
 import { InspirationCardProps } from 'components/Home/InspirationCard';
 import InspirationSection from 'components/Home/InspirationSection';
@@ -9,7 +10,6 @@ import inspirationImage03 from 'assets/images/inspiration/03.png';
 import inspirationImage04 from 'assets/images/inspiration/04.png';
 import inspirationImage05 from 'assets/images/inspiration/05.png';
 import inspirationImage06 from 'assets/images/inspiration/06.png';
-import Header from 'components/Header';
 
 const HomePage: React.FC = () => {
     const handleCardAction = (title: string) => {

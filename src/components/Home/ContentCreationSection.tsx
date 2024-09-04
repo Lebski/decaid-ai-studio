@@ -2,7 +2,7 @@ import React from 'react';
 import editIcon from 'assets/images/edit-04.svg';
 import searchIcon from 'assets/images/search-refraction.svg';
 import ContentCreationCard from './ContentCreationCard';
-import SectionWrapper from 'components/SectionWrapper';
+import SectionWrapper from 'components/Common/SectionWrapper';
 
 const ContentCreationSection: React.FC = () => {
   const handleCreatePost = () => {
