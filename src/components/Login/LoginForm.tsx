@@ -74,10 +74,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
             Forgot password
           </a>
         </div>
-        <Button type="submit" variant="primary" className="mt-6">
+        <Button type="submit" variant="primary" size="lg" className="mt-6">
           Sign in
         </Button>
-        <Button type="button" variant="secondary" className="mt-4" onClick={onGoogleSignIn}>
+        <Button type="button" variant="secondary" size="lg" className="mt-4" onClick={onGoogleSignIn}>
           <img src={socialLoginIconGoogle} alt="Google" className="w-6 h-6 mr-2" />
           Sign in with Google
         </Button>

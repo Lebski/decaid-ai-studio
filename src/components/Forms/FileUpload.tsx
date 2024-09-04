@@ -88,7 +88,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage, 
     }, [handleFileSelection]);
 
     return (
-        <div className="flex flex-col flex-1 gap-4 shrink max-w-lg basis-0 min-w-[320px] max-md:max-w-full">
+        <>
             <div 
                 className="flex flex-col justify-center px-6 py-4 w-full bg-white rounded-xl border border-gray-200 border-solid max-md:px-5 max-md:max-w-full cursor-pointer"
                 onClick={onClickUpload}
@@ -132,7 +132,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ allowedFormats, formatMessage, 
                     onDelete={() => setUploadingFiles(prev => prev.filter(f => f !== file))}
                 />
             ))}
-        </div>
+        </>
     );
 };
 
