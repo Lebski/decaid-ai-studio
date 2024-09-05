@@ -6,7 +6,7 @@ interface IntegrationCardProps {
   imageSrc: string;
   description: string;
   isActive: boolean;
-  onToggle: (isActive: boolean) => void;
+  onToggle: () => void;
   onViewIntegration: () => void;
 }
 
