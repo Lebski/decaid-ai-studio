@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import NavItem from './NavItem';
 import NewFeaturesCard from './NewFeaturesCard';
@@ -27,6 +27,12 @@ const Sidebar: React.FC<SidebarProps> = ({
   onSearchInputChange,
   onSearchSubmit
 }) => {
+  const [showNewFeatureCard, setShowNewFeatureCard] = useState(true);
+
+  const handleHideNewFeatureCard = () => {
+    setShowNewFeatureCard(false);
+  };
+
   return (
     <aside className="flex flex-col h-full bg-white border-r border-gray-200 w-[280px] min-w-[240px] overflow-hidden">
       <div className="flex flex-col flex-grow">
@@ -54,15 +60,17 @@ const Sidebar: React.FC<SidebarProps> = ({
           <NavItem icon={supportIcon} label="Support" path="/support" />
           <NavItem icon={settingsIcon} label="Settings" path="/settings" />
         </nav>
-        <NewFeaturesCard
-          title="New feature"
-          description="This is a new feature description"
-          image={newFeatureThumbnail}
-          onClose={() => console.log('Close clicked')}
-          onDismiss={() => console.log('Dismiss clicked')}
-          onWhatsNew={() => console.log("What's new clicked")}
-          onPlay={() => console.log('Play clicked')}
-        />
+        {showNewFeatureCard && (
+          <NewFeaturesCard
+            title="New feature"
+            description="This is a new feature description"
+            image={newFeatureThumbnail}
+            onClose={handleHideNewFeatureCard}
+            onDismiss={handleHideNewFeatureCard}
+            onWhatsNew={() => console.log("What's new clicked")}
+            onPlay={() => console.log('Play clicked')}
+          />
+        )}
         <UserProfile {...userProfile} />
       </div>
     </aside>
