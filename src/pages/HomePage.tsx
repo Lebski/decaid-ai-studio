@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from 'components/Common/Header';
 import ContentCreationSection from 'components/Home/ContentCreationSection';
 import { InspirationCardProps } from 'components/Home/InspirationCard';
@@ -12,6 +13,16 @@ import inspirationImage05 from 'assets/images/inspiration/05.png';
 import inspirationImage06 from 'assets/images/inspiration/06.png';
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleCreatePost = () => {
+    navigate('/create');
+  };
+
+  const handleFindTopics = () => {
+    navigate('/research');
+  };
+
   const handleCardAction = (title: string) => {
     console.log(`Clicked on card: ${title}`);
     // Add your logic here for each card action
@@ -71,7 +82,10 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Header title="Home" />
-      <ContentCreationSection />
+      <ContentCreationSection
+        onCreatePost={handleCreatePost}
+        onFindTopics={handleFindTopics}
+      />
       <InspirationSection cards={inspirationCards} />
     </>
   );

@@ -4,17 +4,15 @@ import searchIcon from 'assets/images/search-refraction.svg';
 import ContentCreationCard from './ContentCreationCard';
 import SectionWrapper from 'components/Common/SectionWrapper';
 
-const ContentCreationSection: React.FC = () => {
-  const handleCreatePost = () => {
-    console.log('Create a new post');
-    // Add your logic here
-  };
+interface ContentCreationSectionProps {
+  onCreatePost: () => void;
+  onFindTopics: () => void;
+}
 
-  const handleFindTopics = () => {
-    console.log('Find relevant topics');
-    // Add your logic here
-  };
-
+const ContentCreationSection: React.FC<ContentCreationSectionProps> = ({
+  onCreatePost,
+  onFindTopics
+}) => {
   const handleDotsClick = () => {
     console.log('Dots clicked in Content Creation section');
     // Add your logic here
@@ -31,13 +29,13 @@ const ContentCreationSection: React.FC = () => {
             icon={editIcon}
             title="Create a new post"
             description="Dive into the editor and start creating"
-            action={handleCreatePost}
+            action={onCreatePost}
           />
           <ContentCreationCard
             icon={searchIcon}
             title="Find relevant Topics"
             description="Search the news to find topics to talk about"
-            action={handleFindTopics}
+            action={onFindTopics}
           />
         </div>
       </div>
