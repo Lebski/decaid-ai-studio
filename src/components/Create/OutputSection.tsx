@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SectionWrapper from "components/Common/SectionWrapper";
 import FormContainer from "components/Forms/FormContainer";
 import FormContent from "components/Forms/FormContent";
@@ -9,24 +9,43 @@ import Button from 'components/Forms/Button';
 import generateIcon from "assets/images/star-06-white.svg";
 import linkedinIcon from "assets/images/linkedin-icon.svg";
 import copyIcon from "assets/images/copy-05-white.svg";
-
-const handleRePromptInputChange = (value: string) => {
-    console.log("RePrompt input changed:", value);
-}
-
-const handelRegenerateOutput = () => {
-    console.log("Regenerate output");
-}
-
-const handleCopyToClipboard = () => {
-    console.log("Copy to clipboard");
-}
-
-const handleShare = () => {
-    console.log("Share on Linkedin");
-}
+import DraftEditor from 'components/Forms/DraftEditor';
 
 const OutputSection: React.FC = () => {
+    const initialEditorContent = `
+        <p>🎨🏅 <strong>Was für ein Abenteuer!</strong></p>
+        <p>🏄 In einem spannenden Projekt für die <em>Olympischen Spiele in Paris</em> sollten wir für jeden deutschen Athlet*innen des <strong>Team Deutschland</strong> ein KI-generiertes Kunstwerk im <em>"Street-Art"</em> Stil erstellen - und das in extrem knapper Zeit.</p>
+    `;
+
+    const [editorContent, setEditorContent] = useState({
+        text: '',
+        html: initialEditorContent
+    });
+
+    const handleRePromptInputChange = (value: string) => {
+        console.log("RePrompt input changed:", value);
+    }
+
+    const handleRegenerateOutput = () => {
+        console.log("Regenerate output");
+    }
+
+    const handleCopyToClipboard = () => {
+        navigator.clipboard.writeText(editorContent.text)
+            .then(() => console.log("Content copied to clipboard"))
+            .catch(err => console.error("Failed to copy content: ", err));
+    }
+
+    const handleShare = () => {
+        console.log("Share on Linkedin");
+        // Implement LinkedIn sharing logic here
+    }
+
+    const handleEditorContentChange = (content: { text: string; html: string }) => {
+        setEditorContent(content);
+        console.log("Editor content changed:", content);
+    }
+
     return (
         <SectionWrapper
             title="Output"
@@ -38,7 +57,11 @@ const OutputSection: React.FC = () => {
                     description='Edit your output before posting it'
                 />
                 <FormContent>
-                   STUFF
+                   <DraftEditor 
+                     initialValue={initialEditorContent}
+                     onContentChange={handleEditorContentChange}
+                     maxChars={1000} // Adjust this value as needed
+                   />
                 </FormContent>
             </FormContainer>
             <FormContainer className="gap-4">
@@ -63,7 +86,7 @@ const OutputSection: React.FC = () => {
                                 type='button' 
                                 variant='primary' 
                                 size='square'
-                                onClick={handelRegenerateOutput}
+                                onClick={handleRegenerateOutput}
                             >
                                 <img src={generateIcon} alt="Generate" className="w-5 h-5" />
                             </Button>

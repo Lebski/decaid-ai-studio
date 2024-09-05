@@ -1,0 +1,82 @@
+.draft-editor-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.28rem;
+  }
+  
+  .draft-editor-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .draft-editor-toolbar {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .draft-editor-content {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0 0.625rem;
+    min-height: 48px;
+    height: 180px;
+    overflow: auto;
+    font-size: 1rem;
+    line-height: 1.375;
+    color: #111827;
+  }
+  
+  .draft-editor-content:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  .draft-editor-char-counter {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .draft-editor-char-counter.over-limit {
+    color: #dc2626;
+  }
+  
+  /* Adjust the toolbar button styles */
+  .rdw-option-wrapper {
+    border: 0;
+    padding: 0.25rem;
+    min-width: 2rem;
+    height: 2rem;
+    margin: 0 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .rdw-option-wrapper:hover {
+    background-color: #f3f4f6;
+    box-shadow: none;
+    border-radius: 0.25rem;
+  }
+  
+  .rdw-option-active {
+    background-color: #e5e7eb;
+    border-radius: 0.25rem;
+    box-shadow: none;
+  }
+  
+  /* Style for the icons inside the buttons */
+  .rdw-option-wrapper img {
+    filter: brightness(0) saturate(100%) invert(33%) sepia(11%) saturate(494%) hue-rotate(175deg) brightness(94%) contrast(87%);
+  }
+  
+  .rdw-option-active img {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(10%) saturate(624%) hue-rotate(176deg) brightness(96%) contrast(95%);
+  }
+  
+  /* Adjust list button styles */
+  .rdw-list-wrapper {
+    display: flex;
+    align-items: center;
+  }
