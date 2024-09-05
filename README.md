@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+# DECAID AI Studio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DECAID AI Studio is a React-based web application designed to provide AI-powered tools for content creation, research, and design.
+
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Scripts](#available-scripts)
+- [Dependencies](#dependencies)
+- [Development Dependencies](#development-dependencies)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Content creation tools
+- AI-assisted research capabilities
+- Design tools
+- Rich text editing with Draft.js
+- Responsive layout using Tailwind CSS
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (version 14 or higher)
+- npm (usually comes with Node.js)
+
+## Installation
+
+To install DECAID AI Studio, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/decaid-ai-studio.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd decaid-ai-studio
+   ```
+3. Install the dependencies:
+   ```
+   npm install
+   ```
+
+## Usage
+
+To start the development server, run:
+
+```
+npm start
+```
+
+This will start the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- `npm start`: Runs the app in development mode
+- `npm test`: Launches the test runner in interactive watch mode
+- `npm run build`: Builds the app for production to the `build` folder
+- `npm run eject`: Removes the single build dependency from your project
+- `npm run format`: Formats the source code using Prettier
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React 18.3.1
+- React Router 6.26.1
+- Draft.js 0.11.7
+- Day.js 1.11.13
+- TypeScript 4.9.5
 
-### `npm test`
+For a full list of dependencies, please refer to the `package.json` file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Development Dependencies
 
-### `npm run build`
+- Tailwind CSS 3.4.10
+- Prettier 3.3.3
+- TypeScript types for various libraries
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For a full list of dev dependencies, please refer to the `package.json` file.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Contributions to DECAID AI Studio are welcome. Please follow these steps to contribute:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
