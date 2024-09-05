@@ -54,7 +54,7 @@ function AppContent() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route element={<Layout sidebarProps={sidebarProps} />}>
         <Route path="/home" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
