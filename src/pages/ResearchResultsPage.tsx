@@ -4,6 +4,11 @@ import Header from 'components/Common/Header';
 import SearchResultCard, { SearchResultCardTagData } from 'components/Research/SearchResultCard';
 import Pagination from 'components/Common/Pagination';
 import Toggle from 'components/Forms/Toggle';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+// Extend dayjs
+dayjs.extend(relativeTime);
 
 interface SearchResultItem {
     id: number;
@@ -14,9 +19,10 @@ interface SearchResultItem {
     description: string;
     iconUrl: string;
     source: string;
-    timeAgo: string;
+    publishedAt: Date;
     sourceUrl: string;
     displayUrl: string;
+    relevanceScore: number;
 }
 
 const searchResults: SearchResultItem[] = [
@@ -32,9 +38,10 @@ const searchResults: SearchResultItem[] = [
         description: "A report of SF News has shown that the tech giant NVIDIA has recently bought more than one thousand apartments in San Francisco....",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/848610293505719ad761b92a628c2cdce3af2d9a0f92aac9e8569b329a8cb4d7?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "reddit.com",
-        timeAgo: "2 hours ago",
+        publishedAt: new Date(2024, 8, 5, 10, 0), // September 5, 2024, 10:00 AM
         sourceUrl: "https://www.reddit.com/r/technology/comments/nvidia_buys_apartments",
-        displayUrl: "reddit.com"
+        displayUrl: "reddit.com",
+        relevanceScore: 0.95
     },
     {
         id: 2,
@@ -48,9 +55,10 @@ const searchResults: SearchResultItem[] = [
         description: "ByteDance has expanded its offering of a software that can generate videos based on text prompts, joining a growing number of Chinese tech...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/6e7f99c0dee6f1d106af593d3fed37a8e9d4ce5d55837cf11c6e866825bc4b5e?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "reuters.com",
-        timeAgo: "22 hours ago",
+        publishedAt: new Date(2024, 8, 4, 14, 0), // September 4, 2024, 2:00 PM
         sourceUrl: "https://www.reuters.com/technology/bytedance-joins-openais-sora-rivals-with-ai-video-app-launch-2024-03-05/",
-        displayUrl: "reuters.com"
+        displayUrl: "reuters.com",
+        relevanceScore: 0.88
     },
     {
         id: 3,
@@ -64,9 +72,10 @@ const searchResults: SearchResultItem[] = [
         description: "Nvidia shares rebounded in early trading Tuesday, after reports its Blackwell artificial intelligence (AI) chip will be delayed sent the...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/4f3f6d6e976d83b32d1c12e4b668c9ff56c7938fe2647b661bf9895819ead678?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "investopedia.com",
-        timeAgo: "2 days ago",
+        publishedAt: new Date(2024, 8, 3, 9, 30), // September 3, 2024, 9:30 AM
         sourceUrl: "https://www.investopedia.com/nvidia-stock-rebounds-as-analysts-highlight-ai-leadership-8598436",
-        displayUrl: "investopedia.com"
+        displayUrl: "investopedia.com",
+        relevanceScore: 0.92
     },
     {
         id: 4,
@@ -80,9 +89,10 @@ const searchResults: SearchResultItem[] = [
         description: "A revolutionary AI-powered diagnostic tool has received FDA approval, promising to improve early detection of various diseases...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon4.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "healthtech.com",
-        timeAgo: "5 hours ago",
+        publishedAt: new Date(2024, 8, 5, 7, 0), // September 5, 2024, 7:00 AM
         sourceUrl: "https://www.healthtech.com/articles/ai-diagnostic-tool-fda-approval",
-        displayUrl: "healthtech.com"
+        displayUrl: "healthtech.com",
+        relevanceScore: 0.85
     },
     {
         id: 5,
@@ -96,9 +106,10 @@ const searchResults: SearchResultItem[] = [
         description: "An innovative AI-powered tutor app has been launched, offering personalized learning experiences for students across various subjects...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon5.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "edtech-news.com",
-        timeAgo: "1 day ago",
+        publishedAt: new Date(2024, 8, 4, 8, 0), // September 4, 2024, 8:00 AM
         sourceUrl: "https://www.edtech-news.com/new-ai-tutor-app-launch",
-        displayUrl: "edtech-news.com"
+        displayUrl: "edtech-news.com",
+        relevanceScore: 0.78
     },
     {
         id: 6,
@@ -112,9 +123,10 @@ const searchResults: SearchResultItem[] = [
         description: "Tesla has announced a suite of new AI-powered self-driving features for its vehicles, promising enhanced safety and convenience...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon6.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "autoinnovation.com",
-        timeAgo: "3 hours ago",
+        publishedAt: new Date(2024, 8, 5, 9, 0), // September 5, 2024, 9:00 AM
         sourceUrl: "https://www.autoinnovation.com/tesla-new-ai-self-driving-features",
-        displayUrl: "autoinnovation.com"
+        displayUrl: "autoinnovation.com",
+        relevanceScore: 0.89
     },
     {
         id: 7,
@@ -128,9 +140,10 @@ const searchResults: SearchResultItem[] = [
         description: "A new AI-driven trading algorithm has consistently outperformed major market indices, sparking interest from institutional investors...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon7.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "fintech-insider.com",
-        timeAgo: "12 hours ago",
+        publishedAt: new Date(2024, 8, 4, 22, 0), // September 4, 2024, 10:00 PM
         sourceUrl: "https://www.fintech-insider.com/ai-trading-algorithm-outperforms-market",
-        displayUrl: "fintech-insider.com"
+        displayUrl: "fintech-insider.com",
+        relevanceScore: 0.91
     },
     {
         id: 8,
@@ -144,9 +157,10 @@ const searchResults: SearchResultItem[] = [
         description: "Scientists have developed an AI-powered system that significantly improves climate change predictions, aiding in global mitigation efforts...",
         iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon8.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
         source: "climate-tech.org",
-        timeAgo: "8 hours ago",
+        publishedAt: new Date(2024, 8, 5, 4, 0), // September 5, 2024, 4:00 AM
         sourceUrl: "https://www.climate-tech.org/ai-system-improves-climate-predictions",
-        displayUrl: "climate-tech.org"
+        displayUrl: "climate-tech.org",
+        relevanceScore: 0.87
     }
 ];
 
@@ -163,16 +177,8 @@ const handleGenerateClick = (id: number) => {
 
 const ResearchResultsPage: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortBy, setSortBy] = useState<'date' | 'relevance'>('date');
     const itemsPerPage = 3;
-    const totalPages = Math.ceil(searchResults.length / itemsPerPage);
-
-    const handlePageChange = (page: number) => {
-        setCurrentPage(page);
-    };
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentNews = searchResults.slice(startIndex, endIndex);
 
     const [searchParams, setSearchParams] = useState<SearchParams | null>(null);
     const location = useLocation();
@@ -189,9 +195,29 @@ const ResearchResultsPage: React.FC = () => {
                 tags: tags ? JSON.parse(decodeURIComponent(tags)) : [],
                 sources: sources ? JSON.parse(decodeURIComponent(sources)) : []
             });
-            // Here you would typically fetch the search results based on these parameters
         }
     }, [location]);
+
+    const sortedResults = [...searchResults].sort((a, b) => {
+        if (sortBy === 'date') {
+            return b.publishedAt.getTime() - a.publishedAt.getTime();
+        } else {
+            return b.relevanceScore - a.relevanceScore;
+        }
+    });
+
+    const totalPages = Math.ceil(sortedResults.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentNews = sortedResults.slice(startIndex, endIndex);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+    };
+
+    const formatTimeAgo = (date: Date) => {
+        return dayjs(date).fromNow();
+    };
 
     if (!searchParams) {
         return <div>Loading...</div>;
@@ -208,14 +234,7 @@ const ResearchResultsPage: React.FC = () => {
                             { value: 'date', caption: 'Sort by date' },
                             { value: 'relevance', caption: 'Sort by relevance' },
                         ]}
-                        onSelect={(selected) => { }}
-                    />
-                    <Toggle
-                        options={[
-                            { value: 'date', caption: 'Sort by date' },
-                            { value: 'relevance', caption: 'Sort by relevance' },
-                        ]}
-                        onSelect={(selected) => { }}
+                        onSelect={(selected) => setSortBy(selected as 'date' | 'relevance')}
                     />
                 </div>
 
@@ -223,6 +242,7 @@ const ResearchResultsPage: React.FC = () => {
                     <SearchResultCard
                         key={news.id}
                         {...news}
+                        timeAgo={formatTimeAgo(news.publishedAt)}
                         onGenerateClick={() => handleGenerateClick(news.id)}
                     />
                 ))}
