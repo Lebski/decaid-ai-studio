@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import SectionWrapper from "components/Common/SectionWrapper";
 import TabNavigation, { Tab } from "components/Common/TabNavigation";
 import Button from "components/Forms/Button";
@@ -15,15 +15,7 @@ import hfIcon from 'assets/images/source-icons/huggingface.png';
 import redditIcon from 'assets/images/source-icons/reddit.png';
 import bensbitesIcon from 'assets/images/source-icons/bens-bites.png';
 
-const tabs: Tab[] = [
-    { label: 'View all', id: 'all' },
-    { label: 'News', id: 'news' },
-    { label: 'Social Media', id: 'social' },
-    { label: 'Finance', id: 'finance' },
-    { label: 'Tech', id: 'tech' },
-];
-
-interface Integration {
+export interface Integration {
     name: string;
     imageSrc: string;
     description: string;
@@ -31,7 +23,7 @@ interface Integration {
     category: string;
 }
 
-const initialIntegrations: Integration[] = [
+export const initialIntegrations: Integration[] = [
     {
         name: "Hacker News",
         imageSrc: hnIcon,
@@ -97,9 +89,33 @@ const initialIntegrations: Integration[] = [
     }
 ];
 
-const SourcesSection: React.FC = () => {
-    const [activeTab, setActiveTab] = useState('all');
-    const [integrations, setIntegrations] = useState(initialIntegrations);
+interface SourcesSectionProps {
+    integrations: Integration[];
+    onToggleIntegration: (integrationName: string) => void;
+    onViewIntegration: (integrationName: string) => void;
+    onRequestSource: () => void;
+}
+
+const SourcesSection: React.FC<SourcesSectionProps> = ({
+    integrations,
+    onToggleIntegration,
+    onViewIntegration,
+    onRequestSource
+}) => {
+    const tabs: Tab[] = useMemo(() => {
+        const categorySet: { [key: string]: boolean } = { all: true };
+        integrations.forEach(integration => {
+            categorySet[integration.category] = true;
+        });
+        const categories = Object.keys(categorySet);
+        
+        return categories.map(category => ({
+            label: category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1),
+            id: category
+        }));
+    }, [integrations]);
+
+    const [activeTab, setActiveTab] = useState(tabs[0]?.id || 'all');
 
     const handleTabChange = (tabId: string) => {
         setActiveTab(tabId);
@@ -107,20 +123,6 @@ const SourcesSection: React.FC = () => {
 
     const handleDotsClick = () => {
         console.log('Dots clicked');
-    };
-
-    const handleToggleIntegration = (integrationName: string) => {
-        setIntegrations(prevIntegrations =>
-            prevIntegrations.map(integration =>
-                integration.name === integrationName
-                    ? { ...integration, isActive: !integration.isActive }
-                    : integration
-            )
-        );
-    };
-
-    const handleViewIntegration = (integrationName: string) => {
-        console.log(`Viewing integration: ${integrationName}`);
     };
 
     const filteredIntegrations = activeTab === 'all'
@@ -139,7 +141,7 @@ const SourcesSection: React.FC = () => {
                         type="button"
                         variant="secondary"
                         size="sm"
-                        onClick={() => console.log('Request source')}
+                        onClick={onRequestSource}
                     >
                         <img src={plusIcon} alt="Add" className="w-5 h-5" />
                         Request Source
@@ -147,14 +149,14 @@ const SourcesSection: React.FC = () => {
                 </div>
                 <TabNavigation
                     tabs={tabs}
-                    initialActiveTabId="all"
+                    initialActiveTabId={tabs[0]?.id || 'all'}
                     onTabChange={handleTabChange}
                 />
             </div>
             <IntegrationList
                 integrations={filteredIntegrations}
-                onToggleIntegration={handleToggleIntegration}
-                onViewIntegration={handleViewIntegration}
+                onToggleIntegration={onToggleIntegration}
+                onViewIntegration={onViewIntegration}
             />
         </SectionWrapper>
     );

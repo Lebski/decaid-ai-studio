@@ -1,28 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from 'components/Common/Header';
 import AINewsSearch from 'components/Research/AINewsSearch';
-import SourcesSection from 'components/Research/SourcesSection';
+import SourcesSection, { Integration, initialIntegrations } from 'components/Research/SourcesSection';
 
 const ResearchPage: React.FC = () => {
     const navigate = useNavigate();
+    const [integrations, setIntegrations] = useState<Integration[]>(initialIntegrations);
 
     const handleSearchStarted = (searchTerm: string, tagValues: string[]) => {
-        console.log('Search started:', { searchTerm, tagValues });
-        
-        // Encode the search term and tags for the URL
+        const activeSources = integrations
+            .filter(integration => integration.isActive)
+            .map(integration => integration.name);
+
         const encodedSearch = encodeURIComponent(searchTerm);
         const encodedTags = encodeURIComponent(JSON.stringify(tagValues));
+        const encodedSources = encodeURIComponent(JSON.stringify(activeSources));
 
-        // Navigate to the results page with search parameters
-        navigate(`/research/results?search=${encodedSearch}&tags=${encodedTags}`);
+        navigate(`/research/results?search=${encodedSearch}&tags=${encodedTags}&sources=${encodedSources}`);
+    };
+
+    const handleToggleIntegration = (integrationName: string) => {
+        setIntegrations(prevIntegrations =>
+            prevIntegrations.map(integration =>
+                integration.name === integrationName
+                    ? { ...integration, isActive: !integration.isActive }
+                    : integration
+            )
+        );
+    };
+
+    const handleViewIntegration = (integrationName: string) => {
+        console.log(`Viewing integration: ${integrationName}`);
+    };
+
+    const handleRequestSource = () => {
+        console.log('Request source');
     };
 
     return (
         <>
             <Header title="Research" />
             <AINewsSearch onSearchStarted={handleSearchStarted} />
-            <SourcesSection />
+            <SourcesSection
+                integrations={integrations}
+                onToggleIntegration={handleToggleIntegration}
+                onViewIntegration={handleViewIntegration}
+                onRequestSource={handleRequestSource}
+            />
         </>
     );
 };

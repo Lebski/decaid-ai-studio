@@ -5,6 +5,7 @@ import Header from 'components/Common/Header';
 interface SearchParams {
     search: string;
     tags: string[];
+    sources: string[];
 }
 
 const ResearchResultsPage: React.FC = () => {
@@ -15,11 +16,13 @@ const ResearchResultsPage: React.FC = () => {
         const params = new URLSearchParams(location.search);
         const search = params.get('search');
         const tags = params.get('tags');
+        const sources = params.get('sources');
 
-        if (search || tags) {
+        if (search || tags || sources) {
             setSearchParams({
                 search: search || '',
-                tags: tags ? JSON.parse(decodeURIComponent(tags)) : []
+                tags: tags ? JSON.parse(decodeURIComponent(tags)) : [],
+                sources: sources ? JSON.parse(decodeURIComponent(sources)) : []
             });
             // Here you would typically fetch the search results based on these parameters
         }
@@ -36,6 +39,7 @@ const ResearchResultsPage: React.FC = () => {
                 <h2>Search Results</h2>
                 <p>Search term: {searchParams.search}</p>
                 <p>Tags: {searchParams.tags.join(', ')}</p>
+                <p>Active Sources: {searchParams.sources.join(', ')}</p>
                 {/* Add your search results component here */}
             </div>
         </>
