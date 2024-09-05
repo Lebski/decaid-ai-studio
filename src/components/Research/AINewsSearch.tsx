@@ -20,8 +20,13 @@ const initialTags: TagData[] = [
     { id: '3', text: 'Copy Writing', bgColor: 'bg-pink-50', textColor: 'text-pink-700', borderColor: 'border-pink-200', removeIconColor: 'stroke-pink-700' },
 ];
 
-const AINewsSearch: React.FC = () => {
+interface AINewsSearchProps {
+    onSearchStarted: (searchTerm: string, tagValues: string[]) => void;
+}
+
+const AINewsSearch: React.FC<AINewsSearchProps> = ({ onSearchStarted }) => {
     const [tags, setTags] = useState<TagData[]>(initialTags);
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     const handleTagRemoved = (removedTag: TagData) => {
         console.log("Tag removed:", removedTag.text);
@@ -30,14 +35,19 @@ const AINewsSearch: React.FC = () => {
 
     const handleSearchValueChange = (value: string) => {
         console.log("Search value changed:", value);
+        setSearchTerm(value);
     }
 
     const handleSearchBarSubmit = (value: string) => {
         console.log("Search value submitted:", value);
+        const tagValues = tags.map(tag => tag.text);
+        onSearchStarted(value, tagValues);
     }
 
     const handleSearchButtonClick = () => {
         console.log("Search button clicked");
+        const tagValues = tags.map(tag => tag.text);
+        onSearchStarted(searchTerm, tagValues);
     }
 
     return (

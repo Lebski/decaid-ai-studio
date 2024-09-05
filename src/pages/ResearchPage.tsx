@@ -4,10 +4,15 @@ import AINewsSearch from 'components/Research/AINewsSearch';
 import SourcesSection from 'components/Research/SourcesSection';
 
 const ResearchPage: React.FC = () => {
+    const handleSearchStarted = (searchTerm: string, tagValues: string[]) => {
+        console.log('Search started:', { searchTerm, tagValues });
+        // Add your logic here to handle the search
+    };
+
     return (
         <>
             <Header title="Research" />
-            <AINewsSearch />
+            <AINewsSearch onSearchStarted={handleSearchStarted} />
             <SourcesSection />
         </>
     );
