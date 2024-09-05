@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 interface ToggleSwitchProps {
-  label: string;
   id: string;
   onToggle: (isChecked: boolean) => void;
   initialState?: boolean;
+  label?: string;
 }
 
-const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ label, id, onToggle, initialState = false }) => {
+const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ id, onToggle, initialState = false, label }) => {
   const [isChecked, setIsChecked] = useState(initialState);
 
   const handleToggle = () => {
@@ -17,7 +17,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ label, id, onToggle, initia
   };
 
   return (
-    <div className="flex gap-2 items-start min-w-[240px] w-[344px]">
+    <div className="flex items-center">
       <input
         type="checkbox"
         id={id}
@@ -37,9 +37,11 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ label, id, onToggle, initia
           }`}
         />
       </label>
-      <label htmlFor={id} className="flex-1 shrink text-sm font-medium leading-5 min-w-[240px] text-slate-700">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className="ml-2 text-sm font-medium leading-5 text-slate-700">
+          {label}
+        </label>
+      )}
     </div>
   );
 };

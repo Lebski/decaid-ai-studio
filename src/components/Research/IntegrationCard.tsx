@@ -1,3 +1,4 @@
+import ToggleSwitch from 'components/Forms/ToggleSwitch';
 import React from 'react';
 
 interface IntegrationCardProps {
@@ -5,9 +6,18 @@ interface IntegrationCardProps {
   imageSrc: string;
   description: string;
   isActive: boolean;
+  onToggle: (isActive: boolean) => void;
+  onViewIntegration: () => void;
 }
 
-const IntegrationCard: React.FC<IntegrationCardProps> = ({ name, imageSrc, description, isActive }) => {
+const IntegrationCard: React.FC<IntegrationCardProps> = ({ 
+  name, 
+  imageSrc, 
+  description, 
+  isActive, 
+  onToggle,
+  onViewIntegration
+}) => {
   return (
     <article className="flex flex-col bg-white rounded-xl border border-gray-200 border-solid shadow-sm w-full min-w-[320px] h-full">
       <div className="flex flex-col p-5 flex-grow">
@@ -20,10 +30,12 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({ name, imageSrc, descr
               {name}
             </h2>
           </div>
-          <div className="flex-shrink-0 flex flex-col w-9">
-            <div className={`flex overflow-hidden items-center p-0.5 w-9 ${isActive ? 'bg-violet-500' : 'bg-gray-100'} rounded-full min-h-[20px]`}>
-              <div className="flex self-stretch my-auto w-4 h-4 bg-white rounded-full shadow min-h-[16px]" />
-            </div>
+          <div className="flex-shrink-0">
+            <ToggleSwitch
+              id={`toggle-${name}`}
+              onToggle={onToggle}
+              initialState={isActive}
+            />
           </div>
         </div>
         <p className="mt-6 text-sm leading-5 text-slate-600 line-clamp-3">
@@ -34,7 +46,10 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({ name, imageSrc, descr
         <div className="flex w-full bg-gray-200 min-h-[1px]" />
         <div className="flex gap-4 items-center px-6 mt-4 w-full max-md:px-5">
           <div className="flex flex-1 shrink gap-3 items-center self-stretch my-auto w-full basis-0">
-            <button className="overflow-hidden gap-1.5 self-stretch my-auto">
+            <button 
+              className="overflow-hidden gap-1.5 self-stretch my-auto"
+              onClick={onViewIntegration}
+            >
               View integration
             </button>
           </div>
