@@ -7,7 +7,12 @@ interface ToggleSwitchProps {
   label?: string;
 }
 
-const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ id, onToggle, initialState = false, label }) => {
+const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
+  id,
+  onToggle,
+  initialState = false,
+  label
+}) => {
   const [isChecked, setIsChecked] = useState(initialState);
 
   const handleToggle = () => {
@@ -38,7 +43,10 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ id, onToggle, initialState 
         />
       </label>
       {label && (
-        <label htmlFor={id} className="ml-2 text-sm font-medium leading-5 text-slate-700">
+        <label
+          htmlFor={id}
+          className="ml-2 text-sm font-medium leading-5 text-slate-700"
+        >
           {label}
         </label>
       )}

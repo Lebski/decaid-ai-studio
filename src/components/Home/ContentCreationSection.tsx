@@ -21,7 +21,10 @@ const ContentCreationSection: React.FC = () => {
   };
 
   return (
-    <SectionWrapper title="Start creating content" onDotsClick={handleDotsClick}>
+    <SectionWrapper
+      title="Start creating content"
+      onDotsClick={handleDotsClick}
+    >
       <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-wrap gap-6 items-start w-full max-md:max-w-full">
           <ContentCreationCard

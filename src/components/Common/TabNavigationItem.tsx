@@ -6,7 +6,11 @@ interface TabNavigationItemProps {
   onClick: () => void;
 }
 
-const TabNavigationItem: React.FC<TabNavigationItemProps> = ({ label, isActive, onClick }) => {
+const TabNavigationItem: React.FC<TabNavigationItemProps> = ({
+  label,
+  isActive,
+  onClick
+}) => {
   return (
     <li
       className={`gap-2 self-stretch px-1 pb-3 min-h-[32px] cursor-pointer ${

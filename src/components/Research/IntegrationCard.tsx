@@ -10,11 +10,11 @@ interface IntegrationCardProps {
   onViewIntegration: () => void;
 }
 
-const IntegrationCard: React.FC<IntegrationCardProps> = ({ 
-  name, 
-  imageSrc, 
-  description, 
-  isActive, 
+const IntegrationCard: React.FC<IntegrationCardProps> = ({
+  name,
+  imageSrc,
+  description,
+  isActive,
   onToggle,
   onViewIntegration
 }) => {
@@ -24,7 +24,12 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
         <div className="flex gap-2 items-start w-full">
           <div className="flex flex-1 shrink gap-3 items-center basis-0 min-w-0">
             <div className="flex-shrink-0 flex items-center self-stretch p-0.5 my-auto bg-white rounded-lg shadow-sm h-[52px] w-[52px]">
-              <img loading="lazy" src={imageSrc} alt={`${name} logo`} className="object-contain self-stretch my-auto w-12 rounded-lg aspect-square" />
+              <img
+                loading="lazy"
+                src={imageSrc}
+                alt={`${name} logo`}
+                className="object-contain self-stretch my-auto w-12 rounded-lg aspect-square"
+              />
             </div>
             <h2 className="flex-1 self-stretch my-auto text-base font-semibold leading-6 text-gray-900 truncate">
               {name}
@@ -46,7 +51,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
         <div className="flex w-full bg-gray-200 min-h-[1px]" />
         <div className="flex gap-4 items-center px-6 mt-4 w-full max-md:px-5">
           <div className="flex flex-1 shrink gap-3 items-center self-stretch my-auto w-full basis-0">
-            <button 
+            <button
               className="overflow-hidden gap-1.5 self-stretch my-auto"
               onClick={onViewIntegration}
             >

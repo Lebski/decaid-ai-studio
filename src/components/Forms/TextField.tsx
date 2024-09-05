@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 
 interface TextFieldProps {
   name: string;
@@ -10,16 +10,16 @@ interface TextFieldProps {
   maxHeight?: string;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ 
-  name, 
-  ariaLabel, 
-  placeholder, 
-  maxChars = 275, 
+const TextField: React.FC<TextFieldProps> = ({
+  name,
+  ariaLabel,
+  placeholder,
+  maxChars = 275,
   onChange,
   fixedHeight = false,
   maxHeight = '400px'
 }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustHeight = useCallback(() => {
@@ -35,14 +35,17 @@ const TextField: React.FC<TextFieldProps> = ({
     }
   }, [fixedHeight]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newText = e.target.value;
-    setText(newText);
-    onChange?.(newText);
-    if (!fixedHeight) {
-      adjustHeight();
-    }
-  }, [onChange, adjustHeight, fixedHeight]);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newText = e.target.value;
+      setText(newText);
+      onChange?.(newText);
+      if (!fixedHeight) {
+        adjustHeight();
+      }
+    },
+    [onChange, adjustHeight, fixedHeight]
+  );
 
   useEffect(() => {
     adjustHeight();
@@ -68,7 +71,7 @@ const TextField: React.FC<TextFieldProps> = ({
   };
 
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <textarea
         ref={textareaRef}
         style={textareaStyle}
@@ -78,12 +81,14 @@ const TextField: React.FC<TextFieldProps> = ({
         value={text}
         onChange={handleChange}
       />
-      <p style={{
-        marginTop: '6px',
-        fontSize: '14px',
-        lineHeight: '20px',
-        color: isOverLimit ? '#dc2626' : '#4b5563'
-      }}>
+      <p
+        style={{
+          marginTop: '6px',
+          fontSize: '14px',
+          lineHeight: '20px',
+          color: isOverLimit ? '#dc2626' : '#4b5563'
+        }}
+      >
         {Math.abs(charsLeft)} characters {isOverLimit ? 'over' : 'left'}
       </p>
     </div>

@@ -21,11 +21,11 @@ const TagList: React.FC<TagListProps> = ({ initialTags, onTagRemove }) => {
   return (
     <div className="flex flex-wrap gap-2 items-start w-full">
       {initialTags.map((tag) => (
-        <Tag 
+        <Tag
           key={tag.id}
           isRemovable={isRemovable}
           onRemove={isRemovable ? () => onTagRemove(tag) : undefined}
-          {...tag} 
+          {...tag}
         />
       ))}
     </div>

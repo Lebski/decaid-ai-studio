@@ -10,10 +10,21 @@ interface InputFieldProps {
   autocomplete?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, type, placeholder, value, onChange, required, autocomplete}) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  required,
+  autocomplete
+}) => {
   return (
     <div className="flex flex-col w-full mb-5">
-      <label htmlFor={`input-${label.toLowerCase()}`} className="gap-0.5 self-start text-sm font-medium leading-5 whitespace-nowrap text-slate-700">
+      <label
+        htmlFor={`input-${label.toLowerCase()}`}
+        className="gap-0.5 self-start text-sm font-medium leading-5 whitespace-nowrap text-slate-700"
+      >
         {label}
       </label>
       <input

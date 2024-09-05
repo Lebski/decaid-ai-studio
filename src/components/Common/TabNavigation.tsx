@@ -12,8 +12,14 @@ interface TabNavigationProps {
   onTabChange?: (tabId: string) => void;
 }
 
-const TabNavigation: React.FC<TabNavigationProps> = ({ tabs, initialActiveTabId, onTabChange }) => {
-  const [activeTabId, setActiveTabId] = useState(initialActiveTabId || tabs[0]?.id);
+const TabNavigation: React.FC<TabNavigationProps> = ({
+  tabs,
+  initialActiveTabId,
+  onTabChange
+}) => {
+  const [activeTabId, setActiveTabId] = useState(
+    initialActiveTabId || tabs[0]?.id
+  );
 
   const handleTabClick = (tabId: string) => {
     setActiveTabId(tabId);

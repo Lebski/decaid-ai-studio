@@ -16,18 +16,18 @@ interface DropDownProps {
   defaultSelected?: string | null;
 }
 
-const DropDown: React.FC<DropDownProps> = ({ 
-  items, 
-  onSelect, 
-  placeholder = 'Select an option', 
-  defaultSelected = null 
+const DropDown: React.FC<DropDownProps> = ({
+  items,
+  onSelect,
+  placeholder = 'Select an option',
+  defaultSelected = null
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
 
   useEffect(() => {
     if (defaultSelected) {
-      const defaultItem = items.find(item => item.value === defaultSelected);
+      const defaultItem = items.find((item) => item.value === defaultSelected);
       if (defaultItem) {
         setSelectedItem(defaultItem);
         onSelect(defaultItem);
@@ -51,7 +51,11 @@ const DropDown: React.FC<DropDownProps> = ({
       >
         <div className="flex items-center gap-2 flex-1">
           {selectedItem?.iconSrc && (
-            <img src={selectedItem.iconSrc} alt="" className="w-5 h-5 object-contain" />
+            <img
+              src={selectedItem.iconSrc}
+              alt=""
+              className="w-5 h-5 object-contain"
+            />
           )}
           <span className={selectedItem ? 'text-gray-900' : 'text-gray-400'}>
             {selectedItem ? selectedItem.label : placeholder}
@@ -59,7 +63,7 @@ const DropDown: React.FC<DropDownProps> = ({
         </div>
         <img
           src={isOpen ? chevronUp : chevronDown}
-          alt={isOpen ? "Close" : "Open"}
+          alt={isOpen ? 'Close' : 'Open'}
           className="w-5 h-5 object-contain"
         />
       </div>
@@ -72,7 +76,11 @@ const DropDown: React.FC<DropDownProps> = ({
               onClick={() => handleSelect(item)}
             >
               {item.iconSrc && (
-                <img src={item.iconSrc} alt="" className="w-5 h-5 object-contain" />
+                <img
+                  src={item.iconSrc}
+                  alt=""
+                  className="w-5 h-5 object-contain"
+                />
               )}
               <span>{item.label}</span>
             </li>

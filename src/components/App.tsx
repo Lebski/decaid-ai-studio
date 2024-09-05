@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useNavigate
+} from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
@@ -26,7 +32,7 @@ function AppContent() {
       { icon: homeIcon, label: 'Home', path: '/home' },
       { icon: createIcon, label: 'Create', path: '/create' },
       { icon: researchIcon, label: 'Research', path: '/research' },
-      { icon: designIcon, label: 'Design', path: '/design' },
+      { icon: designIcon, label: 'Design', path: '/design' }
     ],
     userProfile: {
       avatar: userAvatar,

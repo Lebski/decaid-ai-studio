@@ -17,13 +17,15 @@ const DraftEditor: React.FC<DraftEditorProps> = ({
   initialValue = '',
   onChange,
   onContentChange,
-  maxChars = 275,
+  maxChars = 275
 }) => {
   const [editorState, setEditorState] = useState(() => {
     if (initialValue) {
       const contentBlock = htmlToDraft(initialValue);
       if (contentBlock) {
-        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+        const contentState = ContentState.createFromBlockArray(
+          contentBlock.contentBlocks
+        );
         return EditorState.createWithContent(contentState);
       }
     }
@@ -32,24 +34,27 @@ const DraftEditor: React.FC<DraftEditorProps> = ({
 
   const [charCount, setCharCount] = useState(0);
 
-  const handleEditorChange = useCallback((newEditorState: EditorState) => {
-    const currentContent = newEditorState.getCurrentContent();
-    const currentContentLength = currentContent.getPlainText('').length;
+  const handleEditorChange = useCallback(
+    (newEditorState: EditorState) => {
+      const currentContent = newEditorState.getCurrentContent();
+      const currentContentLength = currentContent.getPlainText('').length;
 
-    if (currentContentLength <= maxChars) {
-      setEditorState(newEditorState);
-      setCharCount(currentContentLength);
+      if (currentContentLength <= maxChars) {
+        setEditorState(newEditorState);
+        setCharCount(currentContentLength);
 
-      const rawContentState = convertToRaw(currentContent);
-      const htmlContent = draftToHtml(rawContentState);
-      onChange?.(htmlContent);
+        const rawContentState = convertToRaw(currentContent);
+        const htmlContent = draftToHtml(rawContentState);
+        onChange?.(htmlContent);
 
-      onContentChange?.({
-        text: currentContent.getPlainText(),
-        html: htmlContent
-      });
-    }
-  }, [maxChars, onChange, onContentChange]);
+        onContentChange?.({
+          text: currentContent.getPlainText(),
+          html: htmlContent
+        });
+      }
+    },
+    [maxChars, onChange, onContentChange]
+  );
 
   useEffect(() => {
     const currentContent = editorState.getCurrentContent();
@@ -82,16 +87,18 @@ const DraftEditor: React.FC<DraftEditorProps> = ({
             options: ['bold', 'italic', 'underline'],
             bold: { className: 'toolbar-button' },
             italic: { className: 'toolbar-button' },
-            underline: { className: 'toolbar-button' },
+            underline: { className: 'toolbar-button' }
           },
           list: {
             options: ['unordered', 'ordered'],
             unordered: { className: 'toolbar-button' },
-            ordered: { className: 'toolbar-button' },
-          },
+            ordered: { className: 'toolbar-button' }
+          }
         }}
       />
-      <p className={`draft-editor-char-counter ${isOverLimit ? 'over-limit' : ''}`}>
+      <p
+        className={`draft-editor-char-counter ${isOverLimit ? 'over-limit' : ''}`}
+      >
         {Math.abs(charsLeft)} characters {isOverLimit ? 'over' : 'left'}
       </p>
     </div>

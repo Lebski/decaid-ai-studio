@@ -28,11 +28,15 @@ const NewFeaturesCard: React.FC<NewFeaturesCardProps> = ({
           <div className="z-0 flex-1 shrink text-sm font-semibold leading-5 text-gray-900 basis-4">
             {title}
           </div>
-          <button 
+          <button
             onClick={onClose}
             className="flex overflow-hidden absolute -right-2 -top-3 z-0 justify-center items-center p-2 w-9 h-9 rounded-lg min-h-[36px] hover:bg-gray-200 transition-colors duration-300"
           >
-            <img src={closeIcon} alt="Close" className="object-contain self-stretch my-auto w-5 aspect-square" />
+            <img
+              src={closeIcon}
+              alt="Close"
+              className="object-contain self-stretch my-auto w-5 aspect-square"
+            />
           </button>
         </div>
         <div className="mt-1 text-sm leading-5 text-slate-600">
@@ -51,13 +55,13 @@ const NewFeaturesCard: React.FC<NewFeaturesCardProps> = ({
         </div>
       </div>
       <div className="flex gap-3 items-start self-start mt-4 text-sm font-semibold leading-5">
-        <button 
+        <button
           onClick={onDismiss}
           className="overflow-hidden gap-1.5 self-stretch whitespace-nowrap text-slate-600 hover:text-slate-800 transition-colors duration-300"
         >
           Dismiss
         </button>
-        <button 
+        <button
           onClick={onWhatsNew}
           className="overflow-hidden gap-1.5 self-stretch text-violet-700 hover:text-violet-900 transition-colors duration-300"
         >

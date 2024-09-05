@@ -5,13 +5,22 @@ interface DeleteButtonProps {
   onClick?: () => void;
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ iconColor = 'currentColor', onClick }) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ({
+  iconColor = 'currentColor',
+  onClick
+}) => {
   return (
     <button
       className="flex justify-center items-center gap-2 p-2"
       onClick={onClick}
     >
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <g id="trash-01">
           <path
             id="Icon"
