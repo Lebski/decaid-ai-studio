@@ -7,6 +7,21 @@ import Toggle from 'components/Forms/Toggle';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
+import redditIcon from 'assets/images/source-icons/reddit.png';
+import bensBytesIcon from 'assets/images/source-icons/bens-bites.png';
+import hackerNewsIcon from 'assets/images/source-icons/hackernews.png';
+import nytIcon from 'assets/images/source-icons/nyt.png';
+
+import news1 from 'assets/images/news/01.webp';
+import news2 from 'assets/images/news/02.webp';
+import news3 from 'assets/images/news/03.webp';
+import news4 from 'assets/images/news/04.webp';
+import news5 from 'assets/images/news/05.webp';
+import news6 from 'assets/images/news/06.webp';
+import news7 from 'assets/images/news/07.webp';
+import news8 from 'assets/images/news/08.webp';
+
+
 // Extend dayjs
 dayjs.extend(relativeTime);
 
@@ -17,8 +32,6 @@ interface SearchResultItem {
     tags: SearchResultCardTagData[];
     title: string;
     description: string;
-    iconUrl: string;
-    source: string;
     publishedAt: Date;
     sourceUrl: string;
     displayUrl: string;
@@ -28,16 +41,14 @@ interface SearchResultItem {
 const searchResults: SearchResultItem[] = [
     {
         id: 1,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/c7b6e24be6a7ade69dd1a927e3a9b748f36b89e7c86789a4da5d3a2fb972c713?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/95556e0e29036b99839bf85bf6d73b44247812f551d9635b84d604cdfde84d15?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news1,
+        logoUrl: redditIcon,
         tags: [
             { id: "1", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "2", text: "R&D", textColor: "text-indigo-700", bgColor: "bg-indigo-50", borderColor: "border-indigo-200" }
         ],
         title: "NVIDIA buys 1,000 apartments in San Francisco",
         description: "A report of SF News has shown that the tech giant NVIDIA has recently bought more than one thousand apartments in San Francisco....",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/848610293505719ad761b92a628c2cdce3af2d9a0f92aac9e8569b329a8cb4d7?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "reddit.com",
         publishedAt: new Date(2024, 8, 5, 10, 0), // September 5, 2024, 10:00 AM
         sourceUrl: "https://www.reddit.com/r/technology/comments/nvidia_buys_apartments",
         displayUrl: "reddit.com",
@@ -45,16 +56,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 2,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/64169d3d7c3eac9c978d7a3e928d6cc0a9dbf8fa763777ef28932f9aae7e2faa?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/b20b973a90d05ec06b378044d6e0a6eb4fb0f18e2e54a10ebcd2ff7f208a456f?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news6,
+        logoUrl: bensBytesIcon,
         tags: [
             { id: "3", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "4", text: "OpenAI", textColor: "text-indigo-900", bgColor: "bg-white", borderColor: "border-indigo-900" }
         ],
         title: "ByteDance joins OpenAI's Sora rivals with AI video app launch",
         description: "ByteDance has expanded its offering of a software that can generate videos based on text prompts, joining a growing number of Chinese tech...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/6e7f99c0dee6f1d106af593d3fed37a8e9d4ce5d55837cf11c6e866825bc4b5e?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "reuters.com",
         publishedAt: new Date(2024, 8, 4, 14, 0), // September 4, 2024, 2:00 PM
         sourceUrl: "https://www.reuters.com/technology/bytedance-joins-openais-sora-rivals-with-ai-video-app-launch-2024-03-05/",
         displayUrl: "reuters.com",
@@ -62,16 +71,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 3,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/5db9bc925339ad5d84da2c65a5d327e2d0f08123a95e955fbdebb72bef928a24?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/a0414592a3645af67f3bf2aea7ae7520c2fcad5fad9a2eac7149a10a150a20a6?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news8,
+        logoUrl: hackerNewsIcon,
         tags: [
             { id: "5", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "6", text: "Stock", textColor: "text-orange-700", bgColor: "bg-white", borderColor: "border-orange-600" }
         ],
         title: "Nvidia Stock Rebounds as Analysts Highlight AI Leadership",
         description: "Nvidia shares rebounded in early trading Tuesday, after reports its Blackwell artificial intelligence (AI) chip will be delayed sent the...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/4f3f6d6e976d83b32d1c12e4b668c9ff56c7938fe2647b661bf9895819ead678?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "investopedia.com",
         publishedAt: new Date(2024, 8, 3, 9, 30), // September 3, 2024, 9:30 AM
         sourceUrl: "https://www.investopedia.com/nvidia-stock-rebounds-as-analysts-highlight-ai-leadership-8598436",
         displayUrl: "investopedia.com",
@@ -79,16 +86,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 4,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder4.jpg?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/logo4.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news3,
+        logoUrl: nytIcon,
         tags: [
             { id: "7", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "8", text: "Healthcare", textColor: "text-green-700", bgColor: "bg-green-50", borderColor: "border-green-200" }
         ],
         title: "AI-powered diagnostic tool receives FDA approval",
         description: "A revolutionary AI-powered diagnostic tool has received FDA approval, promising to improve early detection of various diseases...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon4.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "healthtech.com",
         publishedAt: new Date(2024, 8, 5, 7, 0), // September 5, 2024, 7:00 AM
         sourceUrl: "https://www.healthtech.com/articles/ai-diagnostic-tool-fda-approval",
         displayUrl: "healthtech.com",
@@ -96,16 +101,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 5,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder5.jpg?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/logo5.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news7,
+        logoUrl: nytIcon,
         tags: [
             { id: "9", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "10", text: "Education", textColor: "text-purple-700", bgColor: "bg-purple-50", borderColor: "border-purple-200" }
         ],
         title: "New AI tutor app revolutionizes personalized learning",
         description: "An innovative AI-powered tutor app has been launched, offering personalized learning experiences for students across various subjects...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon5.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "edtech-news.com",
         publishedAt: new Date(2024, 8, 4, 8, 0), // September 4, 2024, 8:00 AM
         sourceUrl: "https://www.edtech-news.com/new-ai-tutor-app-launch",
         displayUrl: "edtech-news.com",
@@ -113,16 +116,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 6,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder6.jpg?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/logo6.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news2,
+        logoUrl: hackerNewsIcon,
         tags: [
             { id: "11", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "12", text: "Automotive", textColor: "text-red-700", bgColor: "bg-red-50", borderColor: "border-red-200" }
         ],
         title: "Tesla unveils new AI-powered self-driving features",
         description: "Tesla has announced a suite of new AI-powered self-driving features for its vehicles, promising enhanced safety and convenience...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon6.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "autoinnovation.com",
         publishedAt: new Date(2024, 8, 5, 9, 0), // September 5, 2024, 9:00 AM
         sourceUrl: "https://www.autoinnovation.com/tesla-new-ai-self-driving-features",
         displayUrl: "autoinnovation.com",
@@ -130,16 +131,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 7,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder7.jpg?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/logo7.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news5,
+        logoUrl: redditIcon,
         tags: [
             { id: "13", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "14", text: "Finance", textColor: "text-yellow-700", bgColor: "bg-yellow-50", borderColor: "border-yellow-200" }
         ],
         title: "AI-driven trading algorithm outperforms market indices",
         description: "A new AI-driven trading algorithm has consistently outperformed major market indices, sparking interest from institutional investors...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon7.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "fintech-insider.com",
         publishedAt: new Date(2024, 8, 4, 22, 0), // September 4, 2024, 10:00 PM
         sourceUrl: "https://www.fintech-insider.com/ai-trading-algorithm-outperforms-market",
         displayUrl: "fintech-insider.com",
@@ -147,16 +146,14 @@ const searchResults: SearchResultItem[] = [
     },
     {
         id: 8,
-        imageUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder8.jpg?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        logoUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/logo8.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
+        imageUrl: news4,
+        logoUrl: bensBytesIcon,
         tags: [
             { id: "15", text: "AI", textColor: "text-sky-700", bgColor: "bg-sky-50", borderColor: "border-sky-200" },
             { id: "16", text: "Environment", textColor: "text-emerald-700", bgColor: "bg-emerald-50", borderColor: "border-emerald-200" }
         ],
         title: "AI-powered system tackles climate change prediction",
         description: "Scientists have developed an AI-powered system that significantly improves climate change predictions, aiding in global mitigation efforts...",
-        iconUrl: "https://cdn.builder.io/api/v1/image/assets/TEMP/icon8.png?placeholderIfAbsent=true&apiKey=18de59cafc394053be3149c8f3118dd1",
-        source: "climate-tech.org",
         publishedAt: new Date(2024, 8, 5, 4, 0), // September 5, 2024, 4:00 AM
         sourceUrl: "https://www.climate-tech.org/ai-system-improves-climate-predictions",
         displayUrl: "climate-tech.org",

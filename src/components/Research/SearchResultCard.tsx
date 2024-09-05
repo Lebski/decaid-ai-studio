@@ -19,8 +19,6 @@ interface SearchResultCardProps {
     tags: SearchResultCardTagData[];
     title: string;
     description: string;
-    iconUrl: string;
-    source: string;
     timeAgo: string;
     sourceUrl: string;
     displayUrl: string;
@@ -33,8 +31,6 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
     tags,
     title,
     description,
-    iconUrl,
-    source,
     timeAgo,
     sourceUrl,
     displayUrl,
@@ -44,8 +40,8 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         <article className="flex flex-wrap gap-5 p-4 w-full bg-white rounded-xl border border-gray-200 border-solid shadow-sm max-md:max-w-full">
             <div className="flex overflow-hidden relative flex-col items-start px-2 pt-32 pb-2 rounded-lg min-h-[144px] w-[200px] max-md:pt-24 max-md:pr-5">
                 <img loading="lazy" src={imageUrl} alt="" className="object-cover absolute inset-0 size-full" />
-                <div className="flex relative items-center rounded-full bg-blend-normal">
-                    <img loading="lazy" src={logoUrl} alt="" className="object-contain self-stretch my-auto rounded-2xl aspect-square w-[30px]" />
+                <div className="absolute left-2 bottom-2 flex items-center rounded-full bg-blend-normal">
+                    <img loading="lazy" src={logoUrl} alt="" className="object-contain self-stretch my-auto rounded-2xl aspect-square w-[30px] border-2 border-white border-solid" />
                 </div>
             </div>
             <div className="flex flex-col flex-1 shrink self-start basis-4 min-w-[240px] max-md:max-w-full">
