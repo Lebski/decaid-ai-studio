@@ -5,6 +5,7 @@ import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
 import CreatePage from 'pages/CreatePage';
 import ResearchPage from 'pages/ResearchPage';
+import ResearchResultsPage from 'pages/ResearchResultsPage';
 import DesignPage from 'pages/DesignPage';
 import SettingsPage from 'pages/SettingsPage';
 import SupportPage from 'pages/SupportPage';
@@ -52,6 +53,7 @@ function AppContent() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/research" element={<ResearchPage />} />
+        <Route path="/research/results" element={<ResearchResultsPage />} />
         <Route path="/design" element={<DesignPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/support" element={<SupportPage />} />
